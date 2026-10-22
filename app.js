@@ -94,14 +94,14 @@ const QUESTIONS = [
     why: "Cada contrato cubre 100 unidades, por eso la prima cotizada se multiplica por 100.",
   },
   {
-    q: "Pagaste $2 por un boleto que te deja comprar una caja de manzanas a $10 (call). ¿A qué precio de las manzanas quedas a mano?",
-    options: ["$8", "$10", "$12", "$14"],
+    q: "Pagaste $20 por congelar el precio de un vuelo en $300 (un call). ¿A qué precio del vuelo quedas a mano?",
+    options: ["$280", "$300", "$320", "$340"],
     correct: 2,
-    why: "En un call, punto de equilibrio = strike + prima = 10 + 2 = 12. Arriba de $12 ya ganas.",
+    why: "En un call, punto de equilibrio = strike + prima = 300 + 20 = 320. Arriba de $320 ya ganas.",
   },
   {
-    q: "Compraste un boleto de venta (put) de peras por $2. ¿Cuánto es lo máximo que puedes perder con ese boleto?",
-    options: ["$10", "$2", "$8", "Todo lo que valgan las peras"],
+    q: "Pagaste $300 por poder vender tu auto a $10,000 dentro de un mes (un put). ¿Cuánto es lo máximo que puedes perder con ese contrato?",
+    options: ["$10,000", "$300", "$9,700", "Todo lo que valga el auto"],
     correct: 1,
     why: "Quien compra una opción solo puede perder lo que pagó por ella: la prima.",
   },
@@ -118,10 +118,10 @@ const QUESTIONS = [
     why: "2.50 × 100 unidades = 250 dólares.",
   },
   {
-    q: "Tu boleto de manzanas (call) dice $10, y el día del vencimiento las manzanas valen $6. ¿Qué pasa?",
-    options: ["Estás obligado a comprar a $10", "El boleto no se usa y pierdes los $2 que pagaste", "Ganas $4", "El frutero te devuelve los $2"],
+    q: "Congelaste el precio de un vuelo en $300 y el viernes cuesta $250. ¿Qué pasa?",
+    options: ["Estás obligado a comprar a $300", "No usas el derecho y pierdes los $20 que pagaste", "Ganas $50", "La aerolínea te devuelve los $20"],
     correct: 1,
-    why: "Comprar a $10 lo que vale $6 no tiene sentido. El boleto vence sin valor y solo pierdes lo que costó.",
+    why: "Pagar $300 por lo que cuesta $250 no tiene sentido. El contrato vence sin valor y solo pierdes la prima.",
   },
 ];
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Academia de Opciones</title>
-  <meta name="description" content="Manual interactivo para aprender trading de opciones desde cero, con ejemplos sencillos.">
+  <meta name="description" content="Manual interactivo para aprender trading de opciones desde cero, con ejemplos de la vida diaria.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
   <main>
     <section id="inicio" class="hero">
       <h1>Aprende opciones desde cero, paso a paso</h1>
-      <p>Explicado con manzanas y peras, sin palabras complicadas. Lecciones cortas, un simulador para jugar y preguntas de práctica.</p>
+      <p>Cada concepto se explica primero con su definición exacta y después con un ejemplo de la vida diaria. Lecciones cortas, un simulador para practicar y preguntas de repaso.</p>
       <a class="btn" href="#cap1">Empezar capítulo 1</a>
       <p class="notice">Material educativo. No es asesoría financiera. Operar opciones implica riesgo de perder todo el dinero invertido.</p>
     </section>
@@ -33,33 +33,36 @@
       <h2>Capítulo 1: Qué es una opción</h2>
 
       <article class="lesson" data-lesson="1.1">
-        <h3>1.1 Concepto: un boleto con precio congelado</h3>
-        <p>Imagina una frutería. Hoy las manzanas cuestan <strong>$10</strong> la caja, pero tú crees que pronto van a subir. ¿Qué puedes hacer?</p>
-        <p>Le pagas <strong>$2</strong> al frutero y él te da un boleto que dice: <em>"Hasta el viernes, puedes comprarme una caja a $10, sin importar cuánto cueste ese día."</em></p>
-        <p class="tip">Ese boleto es una <strong>opción</strong>: un papelito que te da el <strong>derecho, pero no la obligación</strong>, de comprar o vender algo a un precio acordado, antes de una fecha límite.</p>
-        <p>Lo importante: si no te conviene usarlo, nadie te obliga. Solo pierdes lo que pagaste por el boleto.</p>
+        <h3>1.1 Concepto: qué es una opción</h3>
+        <p class="tip"><strong>Definición.</strong> Una opción es un contrato que le da a quien lo compra el <strong>derecho, pero no la obligación</strong>, de comprar o vender un activo a un <strong>precio acordado</strong>, hasta una <strong>fecha determinada</strong>, a cambio de pagar un costo por ese contrato.</p>
+        <p><strong>Ejemplo de la vida diaria.</strong> Quieres viajar en diciembre. Hoy el vuelo cuesta <strong>$300</strong>, pero sospechas que va a subir. La aerolínea te ofrece congelar ese precio hasta el viernes por <strong>$20</strong>.</p>
+        <ul>
+          <li>Si el viernes el vuelo cuesta $400, compras a $300 gracias a tu precio congelado.</li>
+          <li>Si el viernes cuesta $250, no usas el congelamiento y compras al precio normal.</li>
+        </ul>
+        <p>Los $20 no se devuelven, pero a cambio tuviste el <em>derecho</em> de decidir. Nadie te obligó a comprar. Eso es una opción.</p>
         <label class="done"><input type="checkbox"> Lección completada</label>
       </article>
 
       <article class="lesson" data-lesson="1.2">
-        <h3>1.2 El boleto de compra: el call (las manzanas)</h3>
-        <p>Sigamos con tu boleto: comprar una caja de manzanas a $10 hasta el viernes, pagando $2 por el boleto.</p>
+        <h3>1.2 El call: derecho a comprar</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>call</strong> es una opción que da el derecho a <strong>comprar</strong> el activo al precio acordado. Se usa cuando se espera que el precio <strong>suba</strong>.</p>
+        <p><strong>Ejemplo.</strong> Es el congelamiento del vuelo: pagaste $20 por el derecho a comprar a $300 hasta el viernes.</p>
         <ul>
-          <li><strong>El viernes las manzanas valen $15:</strong> usas tu boleto, compras a $10 lo que vale $15. Ganaste $5, menos los $2 del boleto: te quedan <strong>$3 de ganancia</strong>.</li>
-          <li><strong>El viernes valen $6:</strong> ni lo usas, porque comprar a $10 lo que vale $6 es mal negocio. Tu boleto no sirve y pierdes los <strong>$2</strong>. Nada más.</li>
+          <li><strong>El viernes el vuelo vale $400:</strong> compras a $300. Te ahorraste $100, menos los $20 que pagaste: quedas <strong>$80 mejor</strong>.</li>
+          <li><strong>El viernes vale $250:</strong> no tiene sentido usar el derecho de pagar $300. Compras a $250 en el mercado y pierdes solo los <strong>$20</strong>.</li>
         </ul>
-        <p class="tip">A este boleto se le llama <strong>call</strong>: te sirve cuando crees que el precio va a <strong>subir</strong>.</p>
         <label class="done"><input type="checkbox"> Lección completada</label>
       </article>
 
       <article class="lesson" data-lesson="1.3">
-        <h3>1.3 El boleto de venta: el put (las peras)</h3>
-        <p>Ahora al revés. Tienes una caja de peras que hoy vale $10 y te da miedo que baje. Pagas $2 por un boleto que dice: <em>"Hasta el viernes, puedes venderme tu caja a $10 pase lo que pase."</em></p>
+        <h3>1.3 El put: derecho a vender</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>put</strong> es una opción que da el derecho a <strong>vender</strong> el activo al precio acordado. Se usa cuando se espera que el precio <strong>baje</strong>.</p>
+        <p><strong>Ejemplo.</strong> Funciona como un seguro. Tienes un auto que hoy vale <strong>$10,000</strong> y te preocupa que pierda valor. Pagas <strong>$300</strong> por un contrato que te permite venderlo a $10,000 dentro de un mes, pase lo que pase con su precio.</p>
         <ul>
-          <li><strong>El viernes las peras valen $6:</strong> usas el boleto y las vendes a $10. Gracias al boleto te ahorraste una pérdida de $4. Como el boleto costó $2, quedas <strong>$2 mejor</strong> que si no lo hubieras comprado.</li>
-          <li><strong>El viernes valen $14:</strong> mejor las vendes en el mercado a $14. El boleto no sirve y pierdes los <strong>$2</strong>.</li>
+          <li><strong>El auto baja a $8,000:</strong> ejerces tu derecho y lo vendes a $10,000. Evitaste perder $2,000, menos los $300 del contrato: quedas <strong>$1,700 mejor</strong>.</li>
+          <li><strong>El auto sube a $11,000:</strong> lo vendes en el mercado a $11,000. El contrato no se usa y pierdes los <strong>$300</strong>, como cuando pagas un seguro y no pasa nada.</li>
         </ul>
-        <p class="tip">A este boleto se le llama <strong>put</strong>: te sirve cuando crees que el precio va a <strong>bajar</strong>.</p>
         <div class="grid2">
           <div class="card"><h4>Call</h4><p>Derecho a <strong>comprar</strong>.<br>Ganas si el precio <strong>sube</strong>.</p></div>
           <div class="card"><h4>Put</h4><p>Derecho a <strong>vender</strong>.<br>Ganas si el precio <strong>baja</strong>.</p></div>
@@ -68,32 +71,36 @@
       </article>
 
       <article class="lesson" data-lesson="1.4">
-        <h3>1.4 Las cuatro piezas del boleto</h3>
-        <p>Todo contrato de opciones se describe con las mismas cuatro piezas. Mira cómo se traducen desde la frutería:</p>
+        <h3>1.4 Las cuatro piezas de un contrato</h3>
+        <p class="tip"><strong>Definición.</strong> Todo contrato de opciones se describe con cuatro datos: el <strong>subyacente</strong>, el <strong>strike</strong>, el <strong>vencimiento</strong> y la <strong>prima</strong>.</p>
         <ul>
-          <li><strong>Subyacente</strong> (lo que se compra o vende): las manzanas. En el mercado real puede ser una acción o un fondo, como QQQ.</li>
-          <li><strong>Strike</strong> (el precio acordado): los $10 por caja.</li>
-          <li><strong>Vencimiento</strong> (la fecha límite): el viernes.</li>
-          <li><strong>Prima</strong> (lo que pagas por el boleto): los $2.</li>
+          <li><strong>Subyacente:</strong> el activo sobre el que va el contrato. En el ejemplo, el vuelo. En el mercado, una acción o un fondo como QQQ.</li>
+          <li><strong>Strike:</strong> el precio acordado. En el ejemplo, los $300.</li>
+          <li><strong>Vencimiento:</strong> la fecha límite para usar el derecho. En el ejemplo, el viernes.</li>
+          <li><strong>Prima:</strong> lo que pagas por el contrato. En el ejemplo, los $20.</li>
         </ul>
-        <p class="tip">En el mercado real de Estados Unidos, cada boleto no cubre una caja sino <strong>100 unidades</strong>. Por eso una prima que aparece como 2.50 en la pantalla cuesta 2.50 × 100 = <strong>250 dólares</strong>.</p>
+        <p class="tip">En el mercado de Estados Unidos, cada contrato de opciones sobre acciones o fondos cubre normalmente <strong>100 unidades</strong>. Por eso una prima que aparece como 2.50 en pantalla cuesta 2.50 × 100 = <strong>250 dólares</strong>.</p>
         <label class="done"><input type="checkbox"> Lección completada</label>
       </article>
 
       <article class="lesson" data-lesson="1.5">
-        <h3>1.5 ¿Cuánto puedo ganar y cuánto puedo perder?</h3>
-        <p>Cuando compras un boleto, tu pérdida tiene un tope: <strong>lo que pagaste por él</strong>. En el ejemplo, $2 por caja. Eso es todo lo que te puedes dejar.</p>
-        <p>La ganancia, en cambio, depende de cuánto se mueva el precio a tu favor. Pero ojo: el boleto ya te costó $2, así que el precio tiene que moverse lo suficiente para <strong>recuperar ese costo</strong> antes de que empieces a ganar.</p>
-        <p class="tip"><strong>Punto de equilibrio</strong>: el precio donde no ganas ni pierdes. Con el boleto de manzanas (strike $10, boleto $2), necesitas que valgan $12 para quedar a mano. Con el put de peras, que valgan $8.</p>
+        <h3>1.5 Cuánto se puede ganar y cuánto se puede perder</h3>
+        <p class="tip"><strong>Definición.</strong> Quien compra una opción puede perder, como máximo, <strong>la prima que pagó</strong>. La ganancia depende de cuánto se mueva el precio a su favor.</p>
+        <p><strong>Ejemplo.</strong> En el vuelo, lo máximo que podías perder eran los $20. En el seguro del auto, los $300. Nada más, aunque el precio se mueva en tu contra.</p>
+        <p>Como la prima ya se pagó, el precio tiene que moverse lo suficiente para <strong>recuperarla</strong> antes de que haya ganancia real. A ese precio se le llama <strong>punto de equilibrio</strong>.</p>
+        <ul>
+          <li><strong>Call:</strong> strike más prima. En el vuelo, 300 + 20 = <strong>$320</strong>.</li>
+          <li><strong>Put:</strong> strike menos prima. En el auto, 10,000 − 300 = <strong>$9,700</strong>.</li>
+        </ul>
         <label class="done"><input type="checkbox"> Lección completada</label>
       </article>
 
       <article class="lesson" data-lesson="1.6">
-        <h3>1.6 Simulador: juega con el boleto</h3>
-        <p>Elige call o put, cambia el strike y la prima, y mueve el precio del viernes para ver cuánto ganarías o perderías con un contrato (100 unidades). Los números son de ejemplo, no precios actuales del mercado.</p>
+        <h3>1.6 Simulador: practica con un contrato</h3>
+        <p>Elige call o put, cambia el strike y la prima, y mueve el precio del día del vencimiento para ver cuánto ganarías o perderías con un contrato (100 unidades). Los números son de ejemplo, no precios actuales del mercado.</p>
         <div class="sim">
           <div class="controls">
-            <label>Tipo de boleto
+            <label>Tipo de contrato
               <select id="simType">
                 <option value="call">Compra de call (gano si sube)</option>
                 <option value="put">Compra de put (gano si baja)</option>
@@ -117,7 +124,7 @@
           </div>
           <svg id="simChart" viewBox="0 0 600 260" role="img" aria-label="Gráfica de ganancia o pérdida al vencimiento"></svg>
         </div>
-        <p class="tip">Fíjate que la línea nunca baja de la pérdida máxima: eso es el costo del boleto. Y que en cada tipo de boleto hay una zona donde el contrato "no sirve" y simplemente pierdes lo que pagaste.</p>
+        <p class="tip">Fíjate que la línea nunca baja de la pérdida máxima: eso es la prima. Y que en cada tipo de contrato hay una zona donde no se usa el derecho y simplemente se pierde lo que se pagó.</p>
         <label class="done"><input type="checkbox"> Lección completada</label>
       </article>
 
@@ -132,14 +139,14 @@
     <section id="glosario">
       <h2>Glosario</h2>
       <dl>
-        <dt>Opción</dt><dd>El boleto: un contrato que da el derecho, no la obligación, de comprar o vender a un precio acordado antes de una fecha límite.</dd>
-        <dt>Call</dt><dd>Boleto para comprar. Sirve cuando esperas que el precio suba.</dd>
-        <dt>Put</dt><dd>Boleto para vender. Sirve cuando esperas que el precio baje.</dd>
-        <dt>Subyacente</dt><dd>Lo que se compra o vende con el boleto: las manzanas del ejemplo. En el mercado, una acción o un fondo como QQQ, IWM o DIA.</dd>
-        <dt>Strike</dt><dd>El precio acordado en el boleto.</dd>
-        <dt>Prima</dt><dd>Lo que pagas por el boleto.</dd>
-        <dt>Vencimiento</dt><dd>La fecha límite: después de ese día el boleto deja de existir.</dd>
-        <dt>Punto de equilibrio</dt><dd>Precio donde no ganas ni pierdes. Call: strike más prima. Put: strike menos prima.</dd>
+        <dt>Opción</dt><dd>Contrato que da el derecho, no la obligación, de comprar o vender un activo a un precio acordado hasta una fecha determinada, a cambio de pagar un costo.</dd>
+        <dt>Call</dt><dd>Opción que da el derecho a comprar. Se usa cuando se espera que el precio suba.</dd>
+        <dt>Put</dt><dd>Opción que da el derecho a vender. Se usa cuando se espera que el precio baje.</dd>
+        <dt>Subyacente</dt><dd>Activo sobre el que va el contrato: una acción o un fondo como QQQ, IWM o DIA.</dd>
+        <dt>Strike</dt><dd>Precio acordado en el contrato.</dd>
+        <dt>Prima</dt><dd>Lo que se paga por el contrato. Es la pérdida máxima de quien compra.</dd>
+        <dt>Vencimiento</dt><dd>Fecha límite del contrato. Después de ese día deja de existir.</dd>
+        <dt>Punto de equilibrio</dt><dd>Precio donde no se gana ni se pierde. Call: strike más prima. Put: strike menos prima.</dd>
       </dl>
     </section>
 
@@ -147,7 +154,7 @@
       <h2>Índice del manual</h2>
       <ol class="roadmap">
         <li class="open"><strong>Capítulo 1:</strong> Qué es una opción <em>(disponible)</em></li>
-        <li><strong>Capítulo 2:</strong> Por qué el boleto cuesta lo que cuesta <em>(en preparación)</em></li>
+        <li><strong>Capítulo 2:</strong> Por qué el contrato cuesta lo que cuesta <em>(en preparación)</em></li>
         <li><strong>Capítulo 3:</strong> Lectura del activo principal con los satélites como confirmación</li>
         <li><strong>Capítulo 4:</strong> Gestión del riesgo: tamaño de posición, reglas de salida, diario de operaciones</li>
         <li><strong>Capítulo 5:</strong> Estrategias adaptadas al sistema propio</li>
