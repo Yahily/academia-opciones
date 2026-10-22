@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academia de Opciones</title>
+  <meta name="description" content="Manual interactivo para aprender trading de opciones paso a paso.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio">Academia de Opciones</a>
+    <nav>
+      <a href="#cap1">Capítulo 1</a>
+      <a href="#glosario">Glosario</a>
+      <a href="#manual">Manual</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <h1>Aprende opciones desde cero, paso a paso</h1>
+      <p>Un manual vivo con lecciones cortas, un simulador y preguntas de práctica. Se construye capítulo a capítulo.</p>
+      <a class="btn" href="#cap1">Empezar capítulo 1</a>
+      <p class="notice">Material educativo. No es asesoría financiera. Operar opciones implica riesgo de perder todo el dinero invertido.</p>
+    </section>
+
+    <section id="cap1">
+      <h2>Capítulo 1: Qué es una opción</h2>
+
+      <article class="lesson" data-lesson="1.1">
+        <h3>1.1 La idea en una frase</h3>
+        <p>Una opción es un contrato que te da el <strong>derecho, pero no la obligación</strong>, de comprar o vender un activo a un precio fijado de antemano, hasta una fecha determinada.</p>
+        <p>Piensa en un apartado de departamento: pagas una cantidad pequeña hoy para congelar el precio. Si el mercado sube, tu precio congelado vale mucho. Si no te conviene, pierdes solo lo que pagaste por apartar.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="1.2">
+        <h3>1.2 Call y put</h3>
+        <div class="grid2">
+          <div class="card">
+            <h4>Call</h4>
+            <p>Derecho a <strong>comprar</strong> al precio strike. Quien compra un call gana si el precio sube por encima del strike más lo que pagó.</p>
+          </div>
+          <div class="card">
+            <h4>Put</h4>
+            <p>Derecho a <strong>vender</strong> al precio strike. Quien compra un put gana si el precio baja por debajo del strike menos lo que pagó.</p>
+          </div>
+        </div>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="1.3">
+        <h3>1.3 Las cuatro piezas de un contrato</h3>
+        <ul>
+          <li><strong>Subyacente:</strong> el activo sobre el que va el contrato. Por ejemplo, el ETF QQQ.</li>
+          <li><strong>Strike:</strong> el precio fijado al que podrías comprar (call) o vender (put).</li>
+          <li><strong>Vencimiento:</strong> la fecha límite del contrato.</li>
+          <li><strong>Prima:</strong> lo que pagas por el contrato. Es tu costo y, si compras, tu pérdida máxima.</li>
+        </ul>
+        <p class="tip">Un contrato de opciones sobre acciones o ETF en Estados Unidos controla normalmente <strong>100 unidades</strong>. Una prima cotizada en 2.50 cuesta 2.50 × 100 = 250 dólares.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="1.4">
+        <h3>1.4 Simulador de resultado al vencimiento</h3>
+        <p>Mueve los controles y mira cuánto ganarías o perderías si compras un contrato. Los números son ilustrativos, no precios actuales del mercado.</p>
+        <div class="sim">
+          <div class="controls">
+            <label>Tipo
+              <select id="simType">
+                <option value="call">Compra de call</option>
+                <option value="put">Compra de put</option>
+              </select>
+            </label>
+            <label>Strike (USD)
+              <input id="simStrike" type="number" value="500" min="1" step="1">
+            </label>
+            <label>Prima por unidad (USD)
+              <input id="simPrem" type="number" value="6" min="0.01" step="0.05">
+            </label>
+            <label>Precio al vencimiento: <strong id="simPriceLabel"></strong>
+              <input id="simPrice" type="range">
+            </label>
+          </div>
+          <div class="results">
+            <div><span>Costo del contrato</span><strong id="rCost"></strong></div>
+            <div><span>Punto de equilibrio</span><strong id="rBE"></strong></div>
+            <div><span>Resultado en este precio</span><strong id="rPnL"></strong></div>
+            <div><span>Pérdida máxima</span><strong id="rMaxLoss"></strong></div>
+          </div>
+          <svg id="simChart" viewBox="0 0 600 260" role="img" aria-label="Gráfica de ganancia o pérdida al vencimiento"></svg>
+        </div>
+        <p class="tip">Observa que la pérdida nunca pasa de la prima pagada, mientras que la ganancia del call puede crecer mucho si el precio sube. Esa asimetría es la gran razón por la que se usan las opciones compradas, y también por qué la mayoría de los contratos baratos vence sin valor.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="1.5">
+        <h3>1.5 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <section id="glosario">
+      <h2>Glosario</h2>
+      <dl>
+        <dt>Call</dt><dd>Opción que da el derecho a comprar el subyacente al precio strike.</dd>
+        <dt>Put</dt><dd>Opción que da el derecho a vender el subyacente al precio strike.</dd>
+        <dt>Strike</dt><dd>Precio pactado en el contrato.</dd>
+        <dt>Prima</dt><dd>Precio que se paga por el contrato de opción.</dd>
+        <dt>Vencimiento</dt><dd>Fecha en que el contrato deja de existir.</dd>
+        <dt>Subyacente</dt><dd>Activo sobre el que se basa la opción, como QQQ, IWM o DIA.</dd>
+        <dt>Punto de equilibrio</dt><dd>Precio al vencimiento en el que no ganas ni pierdes. Call: strike más prima. Put: strike menos prima.</dd>
+      </dl>
+    </section>
+
+    <section id="manual">
+      <h2>Índice del manual</h2>
+      <ol class="roadmap">
+        <li class="open"><strong>Capítulo 1:</strong> Qué es una opción <em>(disponible)</em></li>
+        <li><strong>Capítulo 2:</strong> Qué mueve el precio de una opción: valor intrínseco y extrínseco, delta, theta, volatilidad implícita</li>
+        <li><strong>Capítulo 3:</strong> Lectura del activo principal con los satélites como confirmación</li>
+        <li><strong>Capítulo 4:</strong> Gestión del riesgo: tamaño de posición, reglas de salida, diario de operaciones</li>
+        <li><strong>Capítulo 5:</strong> Estrategias adaptadas al sistema propio</li>
+        <li><strong>Capítulo 6:</strong> Práctica en simulador y plan de escalamiento</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

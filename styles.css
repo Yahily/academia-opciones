@@ -1,0 +1,94 @@
+:root {
+  --bg: #f7f9fb;
+  --card: #ffffff;
+  --ink: #1b2733;
+  --muted: #5b6b7a;
+  --accent: #0f766e;
+  --accent-soft: #d9f0ed;
+  --good: #15803d;
+  --bad: #b91c1c;
+  --line: #e2e8ee;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1720;
+    --card: #17212c;
+    --ink: #e6edf3;
+    --muted: #9fb0c0;
+    --accent: #2dd4bf;
+    --accent-soft: #12332f;
+    --good: #4ade80;
+    --bad: #f87171;
+    --line: #26323f;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 10px 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-weight: 700; color: var(--accent); text-decoration: none; }
+.topbar nav { display: flex; gap: 14px; flex: 1; }
+.topbar nav a { color: var(--ink); text-decoration: none; font-size: 0.95rem; }
+.progress-wrap { display: flex; align-items: center; gap: 8px; }
+.progress-bar { width: 90px; height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.progress-bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+main { max-width: 820px; margin: 0 auto; padding: 0 16px 48px; }
+section { margin-top: 40px; }
+h1 { font-size: 2rem; line-height: 1.2; }
+h2 { font-size: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 6px; }
+h3 { margin-top: 0; }
+.hero { text-align: center; padding: 48px 0 16px; }
+.btn {
+  display: inline-block; padding: 10px 20px; border: 0; border-radius: 8px;
+  background: var(--accent); color: #fff; font-size: 1rem; cursor: pointer; text-decoration: none;
+}
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-top: 8px; }
+@media (prefers-color-scheme: dark) { .btn { color: #06201d; } }
+.notice { color: var(--muted); font-size: 0.85rem; margin-top: 20px; }
+.lesson, .card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin: 16px 0;
+}
+.card { margin: 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+.tip { background: var(--accent-soft); border-radius: 8px; padding: 10px 14px; }
+.done { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+.sim .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .sim .controls { grid-template-columns: 1fr; } }
+.sim label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; }
+.sim input[type=number], .sim select {
+  padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); font-size: 1rem;
+}
+.sim input[type=range] { width: 100%; }
+.results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+@media (min-width: 700px) { .results { grid-template-columns: repeat(4, 1fr); } }
+.results div { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.results span { display: block; font-size: 0.75rem; color: var(--muted); }
+.results strong { font-size: 1.05rem; }
+.pos { color: var(--good); }
+.neg { color: var(--bad); }
+#simChart { width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+.q { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+.q:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+.q .opt { display: block; width: 100%; text-align: left; margin: 6px 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font-size: 0.95rem; cursor: pointer; }
+.q .opt.right { border-color: var(--good); background: var(--accent-soft); }
+.q .opt.wrong { border-color: var(--bad); }
+.q .why { font-size: 0.9rem; color: var(--muted); margin: 6px 0 0; }
+.score { font-weight: 700; }
+dt { font-weight: 700; margin-top: 12px; }
+dd { margin: 2px 0 0; color: var(--muted); }
+.roadmap li { margin: 8px 0; }
+.roadmap li.open { color: var(--accent); }
+footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 24px 16px 40px; }
