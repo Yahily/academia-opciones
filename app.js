@@ -94,16 +94,16 @@ const QUESTIONS = [
     why: "Cada contrato cubre 100 unidades, por eso la prima cotizada se multiplica por 100.",
   },
   {
-    q: "Compras un call con strike 500 y prima de 6. ¿Cuál es el punto de equilibrio al vencimiento?",
-    options: ["494", "500", "506", "512"],
+    q: "Pagaste $2 por un boleto que te deja comprar una caja de manzanas a $10 (call). ¿A qué precio de las manzanas quedas a mano?",
+    options: ["$8", "$10", "$12", "$14"],
     correct: 2,
-    why: "En un call, equilibrio = strike + prima = 500 + 6 = 506.",
+    why: "En un call, punto de equilibrio = strike + prima = 10 + 2 = 12. Arriba de $12 ya ganas.",
   },
   {
-    q: "Si compras un put, ¿cuál es tu pérdida máxima?",
-    options: ["Ilimitada", "La prima pagada", "El strike", "Cero"],
+    q: "Compraste un boleto de venta (put) de peras por $2. ¿Cuánto es lo máximo que puedes perder con ese boleto?",
+    options: ["$10", "$2", "$8", "Todo lo que valgan las peras"],
     correct: 1,
-    why: "Quien compra una opción solo puede perder lo que pagó por ella.",
+    why: "Quien compra una opción solo puede perder lo que pagó por ella: la prima.",
   },
   {
     q: "¿Qué derecho te da comprar un put?",
@@ -118,10 +118,10 @@ const QUESTIONS = [
     why: "2.50 × 100 unidades = 250 dólares.",
   },
   {
-    q: "Tu call vence con el precio del subyacente por debajo del strike. ¿Qué pasa?",
-    options: ["Ganas la diferencia", "Vence sin valor y pierdes la prima", "Te obligan a comprar", "Se renueva solo"],
+    q: "Tu boleto de manzanas (call) dice $10, y el día del vencimiento las manzanas valen $6. ¿Qué pasa?",
+    options: ["Estás obligado a comprar a $10", "El boleto no se usa y pierdes los $2 que pagaste", "Ganas $4", "El frutero te devuelve los $2"],
     correct: 1,
-    why: "Sin valor intrínseco al vencimiento, el call expira y pierdes la prima pagada.",
+    why: "Comprar a $10 lo que vale $6 no tiene sentido. El boleto vence sin valor y solo pierdes lo que costó.",
   },
 ];
 
