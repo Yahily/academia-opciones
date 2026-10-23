@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 6: Cómo elegir tu estrategia · Academia de Opciones</title>
+  <meta name="description" content="Un método de cuatro preguntas y un asistente para ordenar las opciones según tu visión, tu capital y tu nivel.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cap6">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html" aria-current="page">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Capítulo 6</p>
+      <h1>Cómo elegir tu estrategia</h1>
+      <p class="lead">Un método de cuatro preguntas y un asistente para ordenar las opciones según tu visión, tu capital y tu nivel.</p>
+    </section>
+
+    <section id="cap6">
+      <article class="lesson" data-lesson="6.1">
+        <h3>6.1 Concepto: las cuatro preguntas para elegir</h3>
+        <p class="tip"><strong>Definición.</strong> Elegir una estrategia es responder <strong>cuatro preguntas, en este orden</strong>: qué esperas que haga el activo, en cuánto tiempo, cuánto puedes perder y qué te permite tu cuenta. La estrategia es la consecuencia de las respuestas, no el punto de partida.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Es como planear un viaje. Primero el <strong>destino</strong> (¿qué espero?), luego las <strong>fechas</strong> (¿cuándo?), luego el <strong>presupuesto</strong> (¿cuánto puedo gastar o perder?) y por último los <strong>documentos</strong> (¿qué me permiten mis papeles?). Nadie compra el boleto antes de saber a dónde va.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>¿Qué espero que haga el activo?</strong> Que suba, que baje, que se quede en un rango, que se mueva mucho sin saber hacia dónde, o solo proteger lo que ya tengo.</li>
+          <li><strong>¿En cuánto tiempo?</strong> Elige un vencimiento que dé <strong>más tiempo que tu idea</strong>. Si crees que pasará en dos semanas, no compres un contrato que vence en cinco días.</li>
+          <li><strong>¿Cuánto puedo perder en esta operación?</strong> Una cifra en dólares que puedas aceptar sin que te quite el sueño.</li>
+          <li><strong>¿Qué me permite mi cuenta?</strong> Tu nivel de aprobación y el dinero disponible.</li>
+        </ol>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="6.2">
+        <h3>6.2 Mapa: de la visión a la estrategia</h3>
+        <p class="tip"><strong>Definición.</strong> Este mapa une cada idea sobre el mercado con las estrategias que encajan. Las de <strong>riesgo definido</strong> son las más adecuadas para empezar.</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Mi visión</th><th>Riesgo definido, poco capital</th><th>Con más capital o con acciones</th><th>Qué evitar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Sube</strong></td><td>Compra de call, spread alcista de débito, spread alcista de crédito</td><td>Put con efectivo asegurado, call cubierto</td><td>Venta de puts descubiertos</td></tr>
+            <tr><td><strong>Baja</strong></td><td>Compra de put, spread bajista de débito, spread bajista de crédito</td><td>Put protector si tienes acciones</td><td>Venta de calls descubiertos (pérdida ilimitada)</td></tr>
+            <tr><td><strong>Se queda en un rango</strong></td><td>Iron condor, spreads de crédito</td><td>Call cubierto, put con efectivo asegurado</td><td>Comprar contratos simples: el tiempo los desgasta si el precio no se mueve</td></tr>
+            <tr><td><strong>Se mueve mucho, no sé hacia dónde</strong></td><td>Straddle o strangle comprados</td><td>—</td><td>Entrar con la volatilidad ya muy alta sin evento claro</td></tr>
+            <tr><td><strong>Quiero proteger acciones que tengo</strong></td><td>—</td><td>Put protector, collar</td><td>Dejarlas sin plan ante una caída</td></tr>
+          </tbody>
+        </table></div>
+        <p>Dos reglas para empezar: (1) un spread de débito suele costar menos que la compra simple del mismo lado, a cambio de limitar la ganancia; (2) si dudas entre dos opciones, elige la que tenga <strong>pérdida máxima menor y conocida</strong>.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="6.3">
+        <h3>6.3 Con poco capital: qué mirar primero</h3>
+        <p class="tip"><strong>Definición.</strong> Con un fondo pequeño, el factor que manda es la <strong>pérdida máxima por operación</strong>. En una estrategia de compra, esa pérdida es la prima o el débito. Se convierte en un tope de precio por acción dividiendo entre 100.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Si aceptas perder como máximo $100 en una operación, la prima máxima que puedes pagar es $100 ÷ 100 = <strong>$1.00 por acción</strong>. Si aceptas $50, el tope es $0.50.</p>
+        </div>
+        <div class="sim">
+          <div class="controls">
+            <label>Pérdida máxima que acepto (USD)<input id="mLoss" type="number" value="100" min="1" step="5"></label>
+            <label>Costo del contrato elegido (USD, prima × 100)<input id="mCost" type="number" value="80" min="1" step="5"></label>
+          </div>
+          <div class="results">
+            <div><span>Prima máxima por acción</span><strong id="mMax"></strong></div>
+            <div><span>Contratos que alcanzan</span><strong id="mN"></strong></div>
+            <div><span>Riesgo real con esos contratos</span><strong id="mRisk"></strong></div>
+          </div>
+          <p id="mMsg" class="tip"></p>
+        </div>
+        <p class="warn"><strong>Con ETFs de precio alto, ojo.</strong> Cuando tu tope de prima es muy bajo, lo normal es que solo alcances contratos muy lejanos del precio actual, que casi siempre vencen sin valor. Dos caminos más sensatos: (1) un spread de débito, que baja el costo manteniendo contratos más cercanos al precio; o (2) practicar en simulador mientras juntas más capital.</p>
+        <ul>
+          <li>Evita las estrategias con acciones (call cubierto, put con efectivo, put protector): piden decenas de miles de dólares en un activo como QQQ.</li>
+          <li>Prefiere contratos con spread angosto, buen volumen y buen interés abierto.</li>
+          <li>El tamaño de la posición como porcentaje del fondo lo definiremos en el capítulo de gestión del riesgo.</li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="6.4">
+        <h3>6.4 Asistente para elegir</h3>
+        <p>Responde estas cinco preguntas y el asistente ordena las estrategias que encajan con tu idea. Es una guía educativa con reglas simples, no una recomendación personalizada de inversión.</p>
+        <div class="sim">
+          <div class="controls">
+            <label>1. ¿Qué espero del activo?
+              <select id="wView">
+                <option value="sube">Que suba</option>
+                <option value="baja">Que baje</option>
+                <option value="lateral">Que se quede en un rango</option>
+                <option value="grande">Que se mueva mucho, no sé hacia dónde</option>
+                <option value="proteger">Quiero proteger acciones que ya tengo</option>
+              </select>
+            </label>
+            <label>2. Nivel de opciones aprobado en mi cuenta
+              <select id="wLevel">
+                <option value="-1">Todavía no tengo aprobación</option>
+                <option value="0">Nivel 0</option>
+                <option value="1" selected>Nivel 1</option>
+                <option value="2">Nivel 2</option>
+                <option value="3">Nivel 3</option>
+              </select>
+            </label>
+            <label>3. Dinero disponible para esta operación (USD)
+              <input id="wCap" type="number" value="500" min="0" step="50">
+            </label>
+            <label>4. Pérdida máxima que acepto (USD)
+              <input id="wLoss" type="number" value="100" min="0" step="10">
+            </label>
+            <label>5. Precio actual del activo (USD, míralo en TradingView)
+              <input id="wPrice" type="number" value="500" min="1" step="1">
+            </label>
+          </div>
+          <div id="wOut"></div>
+        </div>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="6.5">
+        <h3>6.5 Ruta de aprendizaje: del papel al dinero real</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>ruta de aprendizaje</strong> es el orden en que se incorporan las estrategias, de la más simple a la más compleja, cuidando de pasar a la siguiente solo cuando la anterior se domina.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Nadie aprende a manejar en una autopista. Primero se practica en un estacionamiento vacío, luego en calles tranquilas y al final en la ruta. Con las opciones pasa igual.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>Papel.</strong> Practica en un simulador sin dinero real. Schwab ofrece una cuenta de práctica llamada paperMoney en su plataforma thinkorswim: confirma si tu cuenta tiene acceso. Registra cada operación en tu diario.</li>
+          <li><strong>Etapa A: compras simples.</strong> Un solo contrato de call o put, con una pérdida máxima pequeña que tú definiste.</li>
+          <li><strong>Etapa B: spreads de débito.</strong> Mismo riesgo definido, menor costo. Requieren nivel 2.</li>
+          <li><strong>Etapa C: spreads de crédito.</strong> Entenderás por qué ganar poco y perder más exige mucha disciplina.</li>
+          <li><strong>Etapa D: estrategias con acciones y combinaciones.</strong> Solo cuando tu fondo lo permita.</li>
+        </ol>
+        <p>Pasa de etapa cuando hayas registrado un número suficiente de operaciones (por ejemplo, unas 20) <strong>respetando tus reglas</strong>, no cuando hayas ganado. Un resultado bueno con reglas rotas no demuestra nada.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="6.6">
+        <h3>6.6 Lista de verificación antes de operar</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>lista de verificación</strong> es un conjunto de preguntas que se responden siempre antes de entrar, para que la emoción del momento no decida por ti.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Los pilotos revisan una lista antes de cada despegue, aunque hayan volado miles de veces. No es falta de experiencia: es lo que evita los errores tontos.</p>
+        </div>
+        <ul class="checklist" data-check="cap6-antes">
+          <li><label><input type="checkbox"> <span>Puedo explicar mi idea en una frase: qué espero, hasta dónde y para cuándo.</span></label></li>
+          <li><label><input type="checkbox"> <span>Revisé la tendencia diaria y los niveles de QQQ, y miré IWM y DIA.</span></label></li>
+          <li><label><input type="checkbox"> <span>Revisé los eventos de los próximos días: resultados de empresas, anuncios económicos.</span></label></li>
+          <li><label><input type="checkbox"> <span>El vencimiento da más tiempo del que necesita mi idea.</span></label></li>
+          <li><label><input type="checkbox"> <span>El spread entre bid y ask es razonable y hay volumen e interés abierto.</span></label></li>
+          <li><label><input type="checkbox"> <span>Sé cuál es mi pérdida máxima en dólares y la acepto.</span></label></li>
+          <li><label><input type="checkbox"> <span>Sé a qué precio salgo si me equivoco y a cuál tomo ganancias.</span></label></li>
+          <li><label><input type="checkbox"> <span>Mi orden será limit, cerca del precio medio.</span></label></li>
+          <li><label><input type="checkbox"> <span>Tengo un plan para antes del vencimiento: cerrar la posición, no dejar que se ejerza.</span></label></li>
+          <li><label><input type="checkbox"> <span>Anoté todo en mi diario antes de entrar.</span></label></li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson">
+        <h3>6.7 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <div class="pager">
+      <a class="prev" href="cap5.html"><small>← Capítulo anterior</small>Capítulo 5: Estrategias de opciones</a>
+      <a class="next" href="glosario.html"><small>Para repasar →</small>Glosario</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+  <script src="cap6.js"></script>
+</body>
+</html>

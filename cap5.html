@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 5: Estrategias de opciones · Academia de Opciones</title>
+  <meta name="description" content="Las estrategias más usadas, cómo se arman, cuánto pueden ganar y perder, y un simulador para probarlas.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cap5">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html" aria-current="page">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Capítulo 5</p>
+      <h1>Estrategias de opciones</h1>
+      <p class="lead">Las estrategias más usadas, cómo se arman, cuánto pueden ganar y perder, y un simulador para probarlas.</p>
+    </section>
+
+    <section id="cap5">
+      <article class="lesson" data-lesson="5.1">
+        <h3>5.1 Concepto: qué es una estrategia de opciones</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>estrategia</strong> es una combinación de uno o más contratos (a veces con acciones) pensada para aprovechar una idea concreta sobre el mercado, con un riesgo y una ganancia que se conocen de antemano. Cada contrato de la combinación se llama <strong>pata</strong>.</p>
+        <p>Cuatro palabras que verás en todas las estrategias:</p>
+        <ul>
+          <li><strong>Posición larga (comprar):</strong> pagas la prima. Lo máximo que pierdes es esa prima.</li>
+          <li><strong>Posición corta (vender):</strong> cobras la prima, pero asumes la obligación de cumplir si el comprador ejerce. El riesgo puede ser mucho mayor que lo cobrado.</li>
+          <li><strong>Débito y crédito:</strong> una estrategia es de <strong>débito</strong> si pagas al entrar y de <strong>crédito</strong> si cobras al entrar.</li>
+          <li><strong>Riesgo definido:</strong> sabes cuál es tu pérdida máxima antes de entrar.</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Comprar un seguro de auto es una posición larga: pagas una prima y lo máximo que pierdes es esa prima. La aseguradora está en la posición corta: cobra la prima, pero si hay un siniestro grande, paga mucho más de lo que cobró. Las estrategias de opciones combinan ambos papeles para construir el perfil de riesgo que buscas.</p>
+        </div>
+        <p><strong>Mapa rápido de lo que veremos:</strong></p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Estrategia</th><th>Visión del mercado</th><th>Tipo</th><th>Riesgo</th><th>Nivel Schwab</th></tr></thead>
+          <tbody>
+            <tr><td>Compra de call</td><td>Sube</td><td>Débito</td><td>Definido</td><td>1</td></tr>
+            <tr><td>Compra de put</td><td>Baja</td><td>Débito</td><td>Definido</td><td>1</td></tr>
+            <tr><td>Spread alcista de débito</td><td>Sube moderado</td><td>Débito</td><td>Definido</td><td>2</td></tr>
+            <tr><td>Spread bajista de débito</td><td>Baja moderado</td><td>Débito</td><td>Definido</td><td>2</td></tr>
+            <tr><td>Spread alcista de crédito</td><td>Sube o se mantiene</td><td>Crédito</td><td>Definido</td><td>2</td></tr>
+            <tr><td>Spread bajista de crédito</td><td>Baja o se mantiene</td><td>Crédito</td><td>Definido</td><td>2</td></tr>
+            <tr><td>Call cubierto</td><td>Lateral o sube poco</td><td>Crédito</td><td>Riesgo de las acciones</td><td>0</td></tr>
+            <tr><td>Put con efectivo asegurado</td><td>Lateral o sube</td><td>Crédito</td><td>Riesgo de comprar las acciones</td><td>1</td></tr>
+            <tr><td>Put protector</td><td>Proteger acciones</td><td>Débito</td><td>Limitado por el put</td><td>1</td></tr>
+            <tr><td>Straddle y strangle comprados</td><td>Movimiento grande</td><td>Débito</td><td>Definido</td><td>1</td></tr>
+            <tr><td>Iron condor</td><td>Lateral</td><td>Crédito</td><td>Definido</td><td>2</td></tr>
+          </tbody>
+        </table></div>
+        <p class="legend">Los niveles son los de la tabla de Schwab vista en el capítulo 3. Confírmalos en tu solicitud.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.2">
+        <h3>5.2 Compra de call</h3>
+        <p class="tip"><strong>Definición.</strong> Comprar un call es pagar una prima por el derecho a comprar el activo al strike. Es la forma más directa de apostar a que el precio <strong>sube</strong>.</p>
+        <ul class="facts">
+          <li><span>Visión</span>El activo sube con fuerza y a tiempo</li>
+          <li><span>Pérdida máxima</span>La prima pagada</li>
+          <li><span>Ganancia máxima</span>Ilimitada en teoría</li>
+          <li><span>Equilibrio</span>Strike + prima</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> El activo cotiza en 500. Compras un call con strike 500 y prima 8: pagas <strong>$800</strong>.</p>
+          <ul>
+            <li>Equilibrio al vencimiento: 508.</li>
+            <li>Si el activo termina en 530: (30 − 8) × 100 = <strong>+$2,200</strong>.</li>
+            <li>Si termina en 495 o menos: <strong>−$800</strong>, todo lo que pagaste.</li>
+          </ul>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> El tiempo (theta) y la caída de la volatilidad juegan en contra. Si el activo sube pero lentamente, o después de la fecha, puedes perder aunque tengas razón en la dirección.</p>
+        <button type="button" class="btn secondary small" data-try="longCall">Probar en el simulador</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.3">
+        <h3>5.3 Compra de put</h3>
+        <p class="tip"><strong>Definición.</strong> Comprar un put es pagar una prima por el derecho a vender el activo al strike. Se usa para apostar a que el precio <strong>baja</strong>, o como seguro.</p>
+        <ul class="facts">
+          <li><span>Visión</span>El activo baja con fuerza y a tiempo</li>
+          <li><span>Pérdida máxima</span>La prima pagada</li>
+          <li><span>Ganancia máxima</span>Grande pero limitada (el activo no baja de cero)</li>
+          <li><span>Equilibrio</span>Strike − prima</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> El activo cotiza en 500. Compras un put con strike 500 y prima 7: pagas <strong>$700</strong>.</p>
+          <ul>
+            <li>Equilibrio al vencimiento: 493.</li>
+            <li>Si el activo termina en 470: (30 − 7) × 100 = <strong>+$2,300</strong>.</li>
+            <li>Si termina en 510 o más: <strong>−$700</strong>.</li>
+          </ul>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> Los mercados suelen caer más rápido que subir, y eso encarece la volatilidad cuando hay miedo. Entrar con un put después de una caída fuerte significa pagar primas altas.</p>
+        <button type="button" class="btn secondary small" data-try="longPut">Probar en el simulador</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.4">
+        <h3>5.4 Spreads de débito: bull call spread y bear put spread</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>spread vertical de débito</strong> combina la compra de un contrato con la venta de otro del mismo tipo y mismo vencimiento, pero con otro strike más lejano. Pagas menos que con el contrato solo, a cambio de poner un <strong>tope</strong> a la ganancia.</p>
+        <div class="example">
+          <p><strong>Ejemplo de la vida diaria.</strong> Volvamos al vuelo con precio congelado en $300 por $20. Podrías abaratar tu costo si le vendes a otra persona el derecho a comprar el mismo vuelo a $350, y te pagan $8 por ello. Tu costo neto baja a $12, pero renuncias a lo que ganes por encima de $350. Pagas menos, y la ganancia tiene tope.</p>
+        </div>
+        <p><strong>Spread alcista de débito (bull call spread):</strong> compras un call y vendes otro con strike más alto.</p>
+        <ul class="facts">
+          <li><span>Visión</span>Sube de forma moderada</li>
+          <li><span>Pérdida máxima</span>El débito pagado</li>
+          <li><span>Ganancia máxima</span>(Ancho del spread − débito) × 100</li>
+          <li><span>Equilibrio</span>Strike bajo + débito</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Activo en 500. Compras call 500 pagando 8 y vendes call 510 cobrando 4. Débito neto: 4, es decir <strong>$400</strong>. Ancho: 10. Ganancia máxima: (10 − 4) × 100 = <strong>$600</strong>. Pérdida máxima: <strong>$400</strong>. Equilibrio: 504.</p>
+        </div>
+        <p><strong>Spread bajista de débito (bear put spread):</strong> compras un put y vendes otro con strike más bajo.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Activo en 500. Compras put 500 pagando 7 y vendes put 490 cobrando 3.50. Débito: 3.50, o <strong>$350</strong>. Ganancia máxima: (10 − 3.50) × 100 = <strong>$650</strong>. Pérdida máxima: <strong>$350</strong>. Equilibrio: 496.50.</p>
+        </div>
+        <p class="tip">Ventaja: cuesta menos y reduce el efecto del tiempo y de la volatilidad. Desventaja: renuncias a las ganancias grandes. Es una de las opciones más comunes para cuentas pequeñas, porque el riesgo está definido. Requiere nivel 2 en Schwab.</p>
+        <button type="button" class="btn secondary small" data-try="bullCallSpread">Probar bull call spread</button>
+        <button type="button" class="btn secondary small" data-try="bearPutSpread">Probar bear put spread</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.5">
+        <h3>5.5 Spreads de crédito: bull put spread y bear call spread</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>spread vertical de crédito</strong> combina la venta de un contrato con la compra de otro del mismo tipo, más lejano, como protección. <strong>Cobras</strong> al entrar y ganas si el precio no llega al strike que vendiste.</p>
+        <div class="example">
+          <p><strong>Ejemplo de la vida diaria.</strong> Es ser una aseguradora con reaseguro. Vendes un seguro y cobras la prima, pero compras otro más barato para limitar lo máximo que podrías tener que pagar si ocurre un desastre. Cobras menos, pero tu peor escenario tiene tope.</p>
+        </div>
+        <p><strong>Spread alcista de crédito (bull put spread):</strong> vendes un put y compras otro con strike más bajo.</p>
+        <ul class="facts">
+          <li><span>Visión</span>Sube o se mantiene por encima de un nivel</li>
+          <li><span>Ganancia máxima</span>El crédito cobrado</li>
+          <li><span>Pérdida máxima</span>(Ancho − crédito) × 100</li>
+          <li><span>Equilibrio</span>Strike vendido − crédito</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Activo en 500. Vendes put 490 cobrando 5 y compras put 480 pagando 2.50. Crédito: 2.50, o <strong>$250</strong>. Ganancia máxima: <strong>$250</strong>, si el activo termina en 490 o más. Pérdida máxima: (10 − 2.50) × 100 = <strong>$750</strong>. Equilibrio: 487.50.</p>
+        </div>
+        <p><strong>Spread bajista de crédito (bear call spread):</strong> vendes un call y compras otro con strike más alto. Gana si el activo baja o se mantiene por debajo del strike vendido.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Activo en 500. Vendes call 510 cobrando 5 y compras call 520 pagando 2.50. Crédito: <strong>$250</strong>. Pérdida máxima: <strong>$750</strong>. Equilibrio: 512.50.</p>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> Aquí se puede ganar poco y perder más: en el ejemplo, ganar $250 arriesgando $750. Tienes que acertar con mucha frecuencia para compensar. Además, el broker aparta como garantía aproximadamente la pérdida máxima, y por ser estilo americano existe el riesgo de que te asignen antes del vencimiento. Requiere nivel 2 en Schwab.</p>
+        <button type="button" class="btn secondary small" data-try="bullPutSpread">Probar bull put spread</button>
+        <button type="button" class="btn secondary small" data-try="bearCallSpread">Probar bear call spread</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.6">
+        <h3>5.6 Estrategias con acciones: call cubierto, put con efectivo y put protector</h3>
+        <p class="tip"><strong>Definición.</strong> Son estrategias que se apoyan en tener acciones o en tener el efectivo apartado para comprarlas. Todas exigen <strong>mucho más capital</strong> que las compras simples, porque un contrato controla 100 unidades.</p>
+        <p><strong>Call cubierto (covered call):</strong> tienes 100 acciones y vendes un call por encima del precio actual. Cobras prima a cambio de limitar la ganancia de las acciones.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Tienes 100 acciones compradas a 500 y vendes un call 515 cobrando 5 (<strong>$500</strong>). Equilibrio: 495. Ganancia máxima: (15 + 5) × 100 = <strong>$2,000</strong>. Si el activo cae, pierdes lo que caigan las acciones menos los $500 cobrados. Se parece a rentar una casa: cobras renta y a cambio aceptas venderla si alguien paga el precio pactado. Nivel 0 en Schwab.</p>
+        </div>
+        <p><strong>Put con efectivo asegurado (cash-secured put):</strong> vendes un put y apartas el dinero para comprar 100 acciones al strike si te las asignan.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Vendes un put 480 cobrando 4 (<strong>$400</strong>) y apartas $48,000. Si el activo termina sobre 480, conservas los $400. Si cae, compras las acciones a 480, que en la práctica te cuestan 476 por la prima. Ganancia máxima: <strong>$400</strong>. Equilibrio: 476. Es como poner una oferta por una propiedad por debajo del precio actual y cobrar por esperar. Nivel 1 en Schwab.</p>
+        </div>
+        <p><strong>Put protector (protective put):</strong> tienes 100 acciones y compras un put como seguro.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Tienes 100 acciones a 500 y compras un put 485 pagando 5 (<strong>$500</strong>). Pase lo que pase con el activo, tu pérdida máxima es (500 − 485 + 5) × 100 = <strong>$2,000</strong>. Los $500 son el costo del seguro. Nivel 1 en Schwab.</p>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> Con un activo como QQQ, 100 acciones valen decenas de miles de dólares. Estas estrategias no son para empezar con presupuestos pequeños: se aprenden primero en el simulador.</p>
+        <button type="button" class="btn secondary small" data-try="coveredCall">Probar call cubierto</button>
+        <button type="button" class="btn secondary small" data-try="cashSecuredPut">Probar put con efectivo</button>
+        <button type="button" class="btn secondary small" data-try="protectivePut">Probar put protector</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.7">
+        <h3>5.7 Straddle y strangle comprados</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>straddle</strong> es comprar un call y un put con el <strong>mismo strike</strong> y vencimiento. Un <strong>strangle</strong> es comprar un call y un put con strikes <strong>distintos</strong> y fuera del dinero. Ganas si el activo se mueve mucho, hacia cualquier lado.</p>
+        <div class="example">
+          <p><strong>Ejemplo de la vida diaria.</strong> Antes de un anuncio importante sabes que el activo se moverá fuerte, pero no hacia dónde. Compras un contrato para cada lado. Uno de los dos valdrá mucho y el otro se perderá: ganas solo si el movimiento supera el costo de ambos juntos.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Visión</span>Movimiento grande, dirección incierta</li>
+          <li><span>Pérdida máxima</span>La suma de las dos primas</li>
+          <li><span>Ganancia máxima</span>Ilimitada hacia arriba, grande hacia abajo</li>
+          <li><span>Equilibrios</span>Strike del call + primas y strike del put − primas</li>
+        </ul>
+        <div class="example">
+          <p><strong>Straddle.</strong> Activo en 500. Compras call 500 pagando 8 y put 500 pagando 7: <strong>$1,500</strong>. Equilibrios: 485 y 515. El activo debe terminar fuera de ese rango para que ganes.</p>
+          <p><strong>Strangle.</strong> Compras call 510 pagando 3.50 y put 490 pagando 3: <strong>$650</strong>. Equilibrios: 483.50 y 516.50. Cuesta menos, pero necesita un movimiento mayor.</p>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> Antes de un evento la volatilidad implícita ya está alta, así que pagas primas caras. Después del evento cae el valor de ambos contratos. Si el movimiento resulta menor al que el mercado esperaba, pierdes aunque el activo se haya movido. Nivel 1 en Schwab.</p>
+        <button type="button" class="btn secondary small" data-try="longStraddle">Probar straddle</button>
+        <button type="button" class="btn secondary small" data-try="longStrangle">Probar strangle</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.8">
+        <h3>5.8 Iron condor</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>iron condor</strong> combina un spread alcista de crédito de puts con un spread bajista de crédito de calls, con el mismo vencimiento. Cobras al entrar y ganas si el activo termina <strong>dentro de un rango</strong>.</p>
+        <div class="example">
+          <p><strong>Ejemplo de la vida diaria.</strong> Apuestas a que la temperatura de tu ciudad se mantendrá entre 20° y 26° durante el mes. Si se queda en ese rango, cobras. Si se sale por cualquier lado, pagas, aunque con un tope.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Visión</span>El activo se queda en un rango</li>
+          <li><span>Ganancia máxima</span>El crédito total cobrado</li>
+          <li><span>Pérdida máxima</span>(Ancho del spread − crédito) × 100</li>
+          <li><span>Equilibrios</span>Strike put vendido − crédito y strike call vendido + crédito</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Activo en 500. Compras put 470 pagando 1.50, vendes put 480 cobrando 3, vendes call 520 cobrando 3 y compras call 530 pagando 1.50. Crédito total: 3, es decir <strong>$300</strong>. Ancho de cada spread: 10. Pérdida máxima: (10 − 3) × 100 = <strong>$700</strong>. Equilibrios: 477 y 523.</p>
+        </div>
+        <p class="warn"><strong>Cuidado.</strong> Tiene cuatro patas, con costos de comisión y spreads por pata, y una relación ganancia/pérdida desfavorable. Es una estrategia avanzada: conviene dominar antes los spreads simples. Requiere nivel 2 en Schwab.</p>
+        <button type="button" class="btn secondary small" data-try="ironCondor">Probar iron condor</button>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.9">
+        <h3>5.9 Otras estrategias (solo concepto)</h3>
+        <p>Existen muchas más combinaciones. Estas son las que más escucharás. No las desarrollamos todavía porque no son para empezar:</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Estrategia</th><th>Idea</th><th>Riesgo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Calendario</strong></td><td>Compras un contrato de vencimiento lejano y vendes uno cercano, con el mismo strike. Aprovecha que el contrato cercano pierde valor más rápido.</td><td>Definido, pero depende de la volatilidad</td></tr>
+            <tr><td><strong>Diagonal</strong></td><td>Como el calendario, pero con strikes distintos.</td><td>Definido en general. Nivel 2 en Schwab</td></tr>
+            <tr><td><strong>Mariposa</strong></td><td>Combina tres strikes para apostar a que el activo termine cerca de uno concreto.</td><td>Definido y pequeño, con ganancia limitada</td></tr>
+            <tr><td><strong>Collar</strong></td><td>Tienes acciones, compras un put de protección y vendes un call para financiarlo.</td><td>Limitado por ambos lados</td></tr>
+            <tr><td><strong>Ratio spread</strong></td><td>Vendes más contratos de los que compras.</td><td>Grande en uno de los lados</td></tr>
+            <tr><td><strong>Venta descubierta (naked)</strong></td><td>Vender un call o un put sin cobertura.</td><td><strong>Un call descubierto tiene pérdida teórica ilimitada. Un put descubierto puede perder hasta el valor completo de las acciones.</strong> Nivel 3 en Schwab</td></tr>
+          </tbody>
+        </table></div>
+        <p class="warn"><strong>Regla para cuentas pequeñas y principiantes.</strong> Evita las estrategias con pérdida ilimitada o muy grande (ventas descubiertas y ratio spreads). Una pérdida mayor que tu fondo es posible en ellas.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="5.10" id="simulador">
+        <h3>5.10 Simulador de estrategias</h3>
+        <p>Elige una estrategia, cambia los strikes y las primas, y mira el resultado al vencimiento: ganancia máxima, pérdida máxima y puntos de equilibrio. Las primas iniciales se calculan con un modelo teórico y no son precios reales de ningún activo.</p>
+        <div class="sim" id="stratSim">
+          <div class="controls">
+            <label>Estrategia
+              <select id="stSel"></select>
+            </label>
+            <label>Precio del activo (USD)
+              <input id="stS" type="number" value="500" min="1" step="1">
+            </label>
+            <label>Días al vencimiento
+              <input id="stD" type="number" value="30" min="1" max="365" step="1">
+            </label>
+            <label>Volatilidad implícita (%)
+              <input id="stIV" type="number" value="20" min="5" max="100" step="1">
+            </label>
+          </div>
+          <p class="legend">Al cambiar la estrategia, el precio, los días o la volatilidad se recalculan strikes y primas de ejemplo. Después puedes editarlos a mano.</p>
+          <p id="stDesc" class="tip"></p>
+          <div id="stLegs" class="legs"></div>
+          <div class="results">
+            <div><span id="stNetLabel">Crédito o débito neto</span><strong id="stNet"></strong></div>
+            <div><span>Ganancia máxima</span><strong id="stMaxG"></strong></div>
+            <div><span>Pérdida máxima</span><strong id="stMaxL"></strong></div>
+            <div><span>Punto(s) de equilibrio</span><strong id="stBE"></strong></div>
+          </div>
+          <svg id="stChart" class="chart" role="img" aria-label="Ganancia o pérdida de la estrategia al vencimiento"></svg>
+          <p id="stNote" class="legend"></p>
+        </div>
+        <p class="tip">Compara dos cosas: (1) el spread alcista de débito contra la compra de call sola: ¿cuánto baja el costo y cuánto ganancia pierdes? (2) El iron condor: ¿cuánto ganas si todo sale bien y cuánto pierdes si no?</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson">
+        <h3>5.11 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <div class="pager">
+      <a class="prev" href="cap4.html"><small>← Capítulo anterior</small>Capítulo 4: TradingView desde cero</a>
+      <a class="next" href="cap6.html"><small>Capítulo siguiente →</small>Capítulo 6: Cómo elegir tu estrategia</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+  <script src="cap5.js"></script>
+</body>
+</html>

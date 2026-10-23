@@ -7,13 +7,22 @@
   <meta name="description" content="Manual interactivo para aprender trading de opciones desde cero, con ejemplos de la vida diaria.">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="inicio">
   <header class="topbar">
-    <a class="brand" href="#inicio">Academia de Opciones</a>
+    <a class="brand" href="index.html">Academia de Opciones</a>
     <nav>
-      <a href="#cap1">Capítulo 1</a>
-      <a href="#glosario">Glosario</a>
-      <a href="#manual">Manual</a>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
     </nav>
     <div class="progress-wrap" title="Tu progreso">
       <div class="progress-bar"><span id="progressFill"></span></div>
@@ -22,151 +31,88 @@
   </header>
 
   <main>
-    <section id="inicio" class="hero">
+    <section class="hero">
       <h1>Aprende opciones desde cero, paso a paso</h1>
-      <p>Cada concepto se explica primero con su definición exacta y después con un ejemplo de la vida diaria. Lecciones cortas, un simulador para practicar y preguntas de repaso.</p>
-      <a class="btn" href="#cap1">Empezar capítulo 1</a>
+      <p>Cada concepto se explica primero con su definición exacta y después con un ejemplo de la vida diaria. Hay simuladores para practicar y preguntas de repaso al final de cada capítulo.</p>
+      <a class="btn" href="cap1.html">Empezar el capítulo 1</a>
       <p class="notice">Material educativo. No es asesoría financiera. Operar opciones implica riesgo de perder todo el dinero invertido.</p>
     </section>
 
-    <section id="cap1">
-      <h2>Capítulo 1: Qué es una opción</h2>
-
-      <article class="lesson" data-lesson="1.1">
-        <h3>1.1 Concepto: qué es una opción</h3>
-        <p class="tip"><strong>Definición.</strong> Una opción es un contrato que le da a quien lo compra el <strong>derecho, pero no la obligación</strong>, de comprar o vender un activo a un <strong>precio acordado</strong>, hasta una <strong>fecha determinada</strong>, a cambio de pagar un costo por ese contrato.</p>
-        <p><strong>Ejemplo de la vida diaria.</strong> Quieres viajar en diciembre. Hoy el vuelo cuesta <strong>$300</strong>, pero sospechas que va a subir. La aerolínea te ofrece congelar ese precio hasta el viernes por <strong>$20</strong>.</p>
-        <ul>
-          <li>Si el viernes el vuelo cuesta $400, compras a $300 gracias a tu precio congelado.</li>
-          <li>Si el viernes cuesta $250, no usas el congelamiento y compras al precio normal.</li>
-        </ul>
-        <p>Los $20 no se devuelven, pero a cambio tuviste el <em>derecho</em> de decidir. Nadie te obligó a comprar. Eso es una opción.</p>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.2">
-        <h3>1.2 El call: derecho a comprar</h3>
-        <p class="tip"><strong>Definición.</strong> Un <strong>call</strong> es una opción que da el derecho a <strong>comprar</strong> el activo al precio acordado. Se usa cuando se espera que el precio <strong>suba</strong>.</p>
-        <p><strong>Ejemplo.</strong> Es el congelamiento del vuelo: pagaste $20 por el derecho a comprar a $300 hasta el viernes.</p>
-        <ul>
-          <li><strong>El viernes el vuelo vale $400:</strong> compras a $300. Te ahorraste $100, menos los $20 que pagaste: quedas <strong>$80 mejor</strong>.</li>
-          <li><strong>El viernes vale $250:</strong> no tiene sentido usar el derecho de pagar $300. Compras a $250 en el mercado y pierdes solo los <strong>$20</strong>.</li>
-        </ul>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.3">
-        <h3>1.3 El put: derecho a vender</h3>
-        <p class="tip"><strong>Definición.</strong> Un <strong>put</strong> es una opción que da el derecho a <strong>vender</strong> el activo al precio acordado. Se usa cuando se espera que el precio <strong>baje</strong>.</p>
-        <p><strong>Ejemplo.</strong> Funciona como un seguro. Tienes un auto que hoy vale <strong>$10,000</strong> y te preocupa que pierda valor. Pagas <strong>$300</strong> por un contrato que te permite venderlo a $10,000 dentro de un mes, pase lo que pase con su precio.</p>
-        <ul>
-          <li><strong>El auto baja a $8,000:</strong> ejerces tu derecho y lo vendes a $10,000. Evitaste perder $2,000, menos los $300 del contrato: quedas <strong>$1,700 mejor</strong>.</li>
-          <li><strong>El auto sube a $11,000:</strong> lo vendes en el mercado a $11,000. El contrato no se usa y pierdes los <strong>$300</strong>, como cuando pagas un seguro y no pasa nada.</li>
-        </ul>
-        <div class="grid2">
-          <div class="card"><h4>Call</h4><p>Derecho a <strong>comprar</strong>.<br>Ganas si el precio <strong>sube</strong>.</p></div>
-          <div class="card"><h4>Put</h4><p>Derecho a <strong>vender</strong>.<br>Ganas si el precio <strong>baja</strong>.</p></div>
+    <section id="capitulos">
+      <h2>Capítulos</h2>
+      <div class="cards">
+        <a class="chapter-card" href="cap1.html" data-chapter="cap1">
+          <span class="num">Capítulo 1</span>
+          <h3>Qué es una opción</h3>
+          <p>Concepto, call, put, las cuatro piezas del contrato y un simulador de ganancia y pérdida.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <a class="chapter-card" href="cap2.html" data-chapter="cap2">
+          <span class="num">Capítulo 2</span>
+          <h3>Por qué el contrato cuesta lo que cuesta</h3>
+          <p>Valor intrínseco y extrínseco, dentro y fuera del dinero, theta, delta, volatilidad implícita y un simulador de precio.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <a class="chapter-card" href="cap3.html" data-chapter="cap3">
+          <span class="num">Capítulo 3</span>
+          <h3>Cómo se lee y se opera una opción</h3>
+          <p>Cadena de opciones, bid y ask, liquidez, tipos de orden, ejercicio y asignación, y reglas para cuentas pequeñas.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <a class="chapter-card" href="cap4.html" data-chapter="cap4">
+          <span class="num">Capítulo 4</span>
+          <h3>TradingView desde cero</h3>
+          <p>Cuenta, descarga, recorrido de la pantalla, velas, tendencia, soportes y resistencias, indicadores y alertas.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <a class="chapter-card" href="cap5.html" data-chapter="cap5">
+          <span class="num">Capítulo 5</span>
+          <h3>Estrategias de opciones</h3>
+          <p>Compras, spreads de débito y crédito, estrategias con acciones, straddle, strangle, iron condor y simulador.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <a class="chapter-card" href="cap6.html" data-chapter="cap6">
+          <span class="num">Capítulo 6</span>
+          <h3>Cómo elegir tu estrategia</h3>
+          <p>Mapa de visión a estrategia, qué mirar con poco capital, asistente interactivo y lista antes de operar.</p>
+          <div class="mini-bar"><span></span></div>
+          <small class="pct">Sin empezar</small>
+        </a>
+        <div class="chapter-card soon">
+          <span class="num">Capítulo 7 · <span class="badge">en preparación</span></span>
+          <h3>Gestión del riesgo y plan de trabajo</h3>
+          <p>Tamaño de posición, reglas de salida, diario de operaciones y plan de ahorro por fases.</p>
         </div>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.4">
-        <h3>1.4 Las cuatro piezas de un contrato</h3>
-        <p class="tip"><strong>Definición.</strong> Todo contrato de opciones se describe con cuatro datos: el <strong>subyacente</strong>, el <strong>strike</strong>, el <strong>vencimiento</strong> y la <strong>prima</strong>.</p>
-        <ul>
-          <li><strong>Subyacente:</strong> el activo sobre el que va el contrato. En el ejemplo, el vuelo. En el mercado, una acción o un fondo como QQQ.</li>
-          <li><strong>Strike:</strong> el precio acordado. En el ejemplo, los $300.</li>
-          <li><strong>Vencimiento:</strong> la fecha límite para usar el derecho. En el ejemplo, el viernes.</li>
-          <li><strong>Prima:</strong> lo que pagas por el contrato. En el ejemplo, los $20.</li>
-        </ul>
-        <p class="tip">En el mercado de Estados Unidos, cada contrato de opciones sobre acciones o fondos cubre normalmente <strong>100 unidades</strong>. Por eso una prima que aparece como 2.50 en pantalla cuesta 2.50 × 100 = <strong>250 dólares</strong>.</p>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.5">
-        <h3>1.5 Cuánto se puede ganar y cuánto se puede perder</h3>
-        <p class="tip"><strong>Definición.</strong> Quien compra una opción puede perder, como máximo, <strong>la prima que pagó</strong>. La ganancia depende de cuánto se mueva el precio a su favor.</p>
-        <p><strong>Ejemplo.</strong> En el vuelo, lo máximo que podías perder eran los $20. En el seguro del auto, los $300. Nada más, aunque el precio se mueva en tu contra.</p>
-        <p>Como la prima ya se pagó, el precio tiene que moverse lo suficiente para <strong>recuperarla</strong> antes de que haya ganancia real. A ese precio se le llama <strong>punto de equilibrio</strong>.</p>
-        <ul>
-          <li><strong>Call:</strong> strike más prima. En el vuelo, 300 + 20 = <strong>$320</strong>.</li>
-          <li><strong>Put:</strong> strike menos prima. En el auto, 10,000 − 300 = <strong>$9,700</strong>.</li>
-        </ul>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.6">
-        <h3>1.6 Simulador: practica con un contrato</h3>
-        <p>Elige call o put, cambia el strike y la prima, y mueve el precio del día del vencimiento para ver cuánto ganarías o perderías con un contrato (100 unidades). Los números son de ejemplo, no precios actuales del mercado.</p>
-        <div class="sim">
-          <div class="controls">
-            <label>Tipo de contrato
-              <select id="simType">
-                <option value="call">Compra de call (gano si sube)</option>
-                <option value="put">Compra de put (gano si baja)</option>
-              </select>
-            </label>
-            <label>Strike: precio acordado (USD)
-              <input id="simStrike" type="number" value="500" min="1" step="1">
-            </label>
-            <label>Prima: lo que pago por unidad (USD)
-              <input id="simPrem" type="number" value="6" min="0.01" step="0.05">
-            </label>
-            <label>Precio el día del vencimiento: <strong id="simPriceLabel"></strong>
-              <input id="simPrice" type="range">
-            </label>
-          </div>
-          <div class="results">
-            <div><span>Costo del contrato</span><strong id="rCost"></strong></div>
-            <div><span>Punto de equilibrio</span><strong id="rBE"></strong></div>
-            <div><span>Resultado en este precio</span><strong id="rPnL"></strong></div>
-            <div><span>Pérdida máxima</span><strong id="rMaxLoss"></strong></div>
-          </div>
-          <svg id="simChart" viewBox="0 0 600 260" role="img" aria-label="Gráfica de ganancia o pérdida al vencimiento"></svg>
+        <div class="chapter-card soon">
+          <span class="num">Capítulo 8 · <span class="badge">en preparación</span></span>
+          <h3>Tu sistema propio</h3>
+          <p>Estrategias adaptadas al sistema de trabajo que construyamos juntos.</p>
         </div>
-        <p class="tip">Fíjate que la línea nunca baja de la pérdida máxima: eso es la prima. Y que en cada tipo de contrato hay una zona donde no se usa el derecho y simplemente se pierde lo que se pagó.</p>
-        <label class="done"><input type="checkbox"> Lección completada</label>
-      </article>
-
-      <article class="lesson" data-lesson="1.7">
-        <h3>1.7 Ponte a prueba</h3>
-        <div id="quiz"></div>
-        <p id="quizScore" class="score"></p>
-        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
-      </article>
+      </div>
+      <p class="notice">Tu progreso se guarda en este navegador, en este dispositivo. Cada persona ve el suyo.</p>
     </section>
 
-    <section id="glosario">
-      <h2>Glosario</h2>
-      <dl>
-        <dt>Opción</dt><dd>Contrato que da el derecho, no la obligación, de comprar o vender un activo a un precio acordado hasta una fecha determinada, a cambio de pagar un costo.</dd>
-        <dt>Call</dt><dd>Opción que da el derecho a comprar. Se usa cuando se espera que el precio suba.</dd>
-        <dt>Put</dt><dd>Opción que da el derecho a vender. Se usa cuando se espera que el precio baje.</dd>
-        <dt>Subyacente</dt><dd>Activo sobre el que va el contrato: una acción o un fondo como QQQ, IWM o DIA.</dd>
-        <dt>Strike</dt><dd>Precio acordado en el contrato.</dd>
-        <dt>Prima</dt><dd>Lo que se paga por el contrato. Es la pérdida máxima de quien compra.</dd>
-        <dt>Vencimiento</dt><dd>Fecha límite del contrato. Después de ese día deja de existir.</dd>
-        <dt>Punto de equilibrio</dt><dd>Precio donde no se gana ni se pierde. Call: strike más prima. Put: strike menos prima.</dd>
-      </dl>
-    </section>
-
-    <section id="manual">
-      <h2>Índice del manual</h2>
-      <ol class="roadmap">
-        <li class="open"><strong>Capítulo 1:</strong> Qué es una opción <em>(disponible)</em></li>
-        <li><strong>Capítulo 2:</strong> Por qué el contrato cuesta lo que cuesta <em>(en preparación)</em></li>
-        <li><strong>Capítulo 3:</strong> Lectura del activo principal con los satélites como confirmación</li>
-        <li><strong>Capítulo 4:</strong> Gestión del riesgo: tamaño de posición, reglas de salida, diario de operaciones</li>
-        <li><strong>Capítulo 5:</strong> Estrategias adaptadas al sistema propio</li>
-        <li><strong>Capítulo 6:</strong> Práctica en simulador y plan de escalamiento</li>
+    <section>
+      <h2>Cómo usar este manual</h2>
+      <ol class="steps">
+        <li><strong>Sigue el orden.</strong> Cada capítulo se apoya en el anterior. Marca cada lección como completada al terminarla.</li>
+        <li><strong>Juega con los simuladores.</strong> Cambiar los números con tus manos enseña más que leer.</li>
+        <li><strong>Responde el quiz del final.</strong> Si fallas una pregunta, la explicación te dice por qué.</li>
+        <li><strong>Consulta el <a href="glosario.html">glosario</a></strong> cuando aparezca una palabra nueva.</li>
       </ol>
     </section>
   </main>
 
   <footer>
-    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión.</p>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
 </body>
 </html>

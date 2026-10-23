@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 3: Cómo se lee y se opera una opción · Academia de Opciones</title>
+  <meta name="description" content="La cadena de opciones, el costo oculto del spread, la liquidez, las órdenes y qué pasa al vencimiento.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cap3">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html" aria-current="page">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Capítulo 3</p>
+      <h1>Cómo se lee y se opera una opción</h1>
+      <p class="lead">La cadena de opciones, el costo oculto del spread, la liquidez, las órdenes y qué pasa al vencimiento.</p>
+    </section>
+
+    <section id="cap3">
+      <article class="lesson" data-lesson="3.1">
+        <h3>3.1 Concepto: la cadena de opciones</h3>
+        <p class="tip"><strong>Definición.</strong> La <strong>cadena de opciones</strong> es una tabla que lista todos los contratos disponibles de un activo, ordenados por vencimiento y por strike. Los <strong>calls</strong> van a un lado, los <strong>puts</strong> al otro, y el <strong>strike</strong> en el centro.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Es como el menú de un restaurante: cada renglón es un platillo (un contrato) con su precio. Tu trabajo es elegir uno, y para eso necesitas saber leer qué dice cada columna.</p>
+        </div>
+        <p>Esta es una cadena de ejemplo, con datos inventados para aprender, de un activo que cotiza en 500 y un vencimiento a 30 días. <strong>Toca cualquier renglón</strong> para que te explique ese contrato.</p>
+        <div class="table-wrap"><table class="tbl chain" id="chain" aria-label="Cadena de opciones de ejemplo">
+          <thead>
+            <tr><th colspan="4" style="text-align:center">CALLS</th><th></th><th colspan="4" style="text-align:center">PUTS</th></tr>
+            <tr><th>Bid</th><th>Ask</th><th>Vol.</th><th>Int. ab.</th><th>Strike</th><th>Bid</th><th>Ask</th><th>Vol.</th><th>Int. ab.</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table></div>
+        <p class="legend"><span class="swatch"></span> Zona sombreada: contratos dentro del dinero. Los calls están dentro del dinero con strikes por debajo de 500; los puts, con strikes por encima.</p>
+        <div id="chainInfo" class="tip">Toca un renglón de la tabla para ver cómo se lee.</div>
+        <ul>
+          <li><strong>Bid:</strong> el precio más alto que alguien ofrece pagar ahora.</li>
+          <li><strong>Ask:</strong> el precio más bajo al que alguien ofrece vender ahora.</li>
+          <li><strong>Vol. (volumen):</strong> cuántos contratos se han operado hoy.</li>
+          <li><strong>Int. ab. (interés abierto):</strong> cuántos contratos siguen vigentes.</li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="3.2">
+        <h3>3.2 Bid, ask y spread: el costo oculto</h3>
+        <p class="tip"><strong>Definición.</strong> El <strong>bid</strong> es el precio al que el mercado te compra y el <strong>ask</strong> es el precio al que el mercado te vende. La diferencia entre ambos es el <strong>spread</strong>. Si compras al ask y vendes de inmediato al bid, pierdes el spread.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> En una casa de cambio, el dólar se vende en 18.20 y se compra en 17.80. Si cambias pesos a dólares y de inmediato los regresas, pierdes 40 centavos por dólar sin que el mercado se haya movido. Esa diferencia es su ganancia y tu costo. En opciones es igual.</p>
+        </div>
+        <p>Calcula el costo de entrar y salir al instante:</p>
+        <div class="sim">
+          <div class="controls">
+            <label>Bid (USD por acción)<input id="bBid" type="number" value="2.40" step="0.01" min="0"></label>
+            <label>Ask (USD por acción)<input id="bAsk" type="number" value="2.60" step="0.01" min="0"></label>
+            <label>Contratos<input id="bQty" type="number" value="1" step="1" min="1"></label>
+          </div>
+          <div class="results">
+            <div><span>Spread por acción</span><strong id="sSpread"></strong></div>
+            <div><span>Spread como % del ask</span><strong id="sPct"></strong></div>
+            <div><span>Pérdida si entras y sales al instante</span><strong id="sLoss"></strong></div>
+            <div><span>Precio medio (punto de partida)</span><strong id="sMid"></strong></div>
+          </div>
+          <p id="sVerdict" class="tip"></p>
+        </div>
+        <p class="warn"><strong>Ojo.</strong> Los contratos baratos y lejanos suelen tener spreads enormes en porcentaje. Un contrato con bid 0.04 y ask 0.06 parece barato, pero el spread es un tercio de su precio.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="3.3">
+        <h3>3.3 Volumen, interés abierto y liquidez</h3>
+        <p class="tip"><strong>Definición.</strong> La <strong>liquidez</strong> es qué tan fácil es entrar y salir de un contrato sin perder dinero extra. Se juzga con tres datos: un <strong>spread angosto</strong>, un <strong>volumen</strong> alto (operado hoy) y un <strong>interés abierto</strong> alto (contratos vigentes).</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Vender un auto muy popular es rápido y a precio justo porque hay muchos compradores. Vender uno raro puede tardar meses o exigir un descuento. Un contrato con poca liquidez es el auto raro: puedes quedarte atrapado o salir con descuento.</p>
+        </div>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Dato</th><th>Qué mirar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Spread</strong></td><td>Cuanto más angosto, mejor. Compáralo contra el precio del contrato, no solo en centavos.</td></tr>
+            <tr><td><strong>Volumen</strong></td><td>Si es cercano a cero, hoy casi nadie opera ese contrato.</td></tr>
+            <tr><td><strong>Interés abierto</strong></td><td>Cientos o miles de contratos vigentes indican que hay con quién negociar.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Por eso se suele empezar con fondos de mucha actividad. QQQ es de los activos con más opciones operadas del mercado, e IWM también. DIA suele tener menos actividad en sus opciones, así que conviene revisar el spread antes de entrar.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="3.4">
+        <h3>3.4 Tipos de orden: market y limit</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>orden market</strong> compra o vende de inmediato al precio que haya. Una <strong>orden limit</strong> fija el precio: compra a ese precio o menos, o vende a ese precio o más. Si el mercado no llega a tu precio, la orden no se ejecuta.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Una orden market es pagar lo que te pidan sin regatear. Una orden limit es decir "pago hasta $200 por este mueble": si el vendedor no baja a ese precio, no hay trato.</p>
+        </div>
+        <ul>
+          <li>En opciones se recomienda usar <strong>órdenes limit</strong>, porque los spreads pueden ser amplios y una orden market podría ejecutarse a un precio mucho peor del esperado.</li>
+          <li>Un buen punto de partida es poner el limit cerca del <strong>precio medio</strong> entre bid y ask, y ajustarlo con paciencia si no se ejecuta.</li>
+          <li>Las órdenes de salida automáticas (stop) en opciones pueden ejecutarse a precios malos cuando el spread es amplio. Conviene entender bien cómo funcionan en tu plataforma antes de usarlas.</li>
+          <li>Una orden "Día" caduca al cierre; una "GTC" (good till canceled) queda activa hasta que la canceles o venza.</li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="3.5">
+        <h3>3.5 Ejercicio, asignación y vencimiento</h3>
+        <p class="tip"><strong>Definición.</strong> <strong>Ejercer</strong> es usar el derecho del contrato: con un call, comprar las 100 acciones al strike; con un put, venderlas. <strong>Asignación</strong> es cuando a quien vendió el contrato le toca cumplir la obligación porque alguien ejerció.</p>
+        <ul>
+          <li>Las opciones sobre QQQ y otros fondos de este tipo son de <strong>estilo americano</strong>: se pueden ejercer en cualquier momento antes del vencimiento, no solo en esa fecha.</li>
+          <li>Se liquidan con <strong>entrega de acciones</strong>: ejercer o ser asignado crea o elimina una posición de acciones, no solo mueve dinero.</li>
+          <li>Normalmente, los contratos que vencen dentro del dinero se ejercen <strong>automáticamente</strong> aunque no hagas nada.</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Es como una suscripción con cobro automático. Si no la cancelas a tiempo, el cargo llega solo. Con un call ejercido, ese cargo es la compra de 100 acciones por el strike completo, que puede ser decenas de miles de dólares.</p>
+        </div>
+        <p class="warn"><strong>Regla práctica para cuentas pequeñas.</strong> Si compras una opción, ciérrala (véndela) antes del vencimiento en lugar de dejar que se ejerza. Así evitas terminar con acciones que no tienes dinero para pagar.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="3.6">
+        <h3>3.6 Tu cuenta: aprobación, reglas para cuentas pequeñas y horarios</h3>
+        <p class="tip"><strong>Definición.</strong> Para operar opciones, el broker te asigna un <strong>nivel de aprobación</strong> que define qué estrategias puedes usar. Se solicita con una aplicación y depende de tu experiencia y de tu cuenta.</p>
+        <p><strong>Niveles de Schwab</strong> según la ayuda de su plataforma StreetSmart (confirma los detalles al hacer tu solicitud, porque pueden cambiar):</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Nivel</th><th>Qué permite</th></tr></thead>
+          <tbody>
+            <tr><td><strong>0</strong></td><td>Calls cubiertos, puts cubiertos y estrategias con acciones que ya tienes</td></tr>
+            <tr><td><strong>1</strong></td><td>Todo lo del nivel 0, más compra de calls y puts, straddles y strangles comprados, y puts con efectivo asegurado</td></tr>
+            <tr><td><strong>2</strong></td><td>Todo lo del nivel 1, más spreads (incluidos diagonales y ratio con más contratos comprados que vendidos)</td></tr>
+            <tr><td><strong>3</strong></td><td>Todo lo del nivel 2, más ventas descubiertas (calls y puts sin cobertura) y straddles y strangles vendidos</td></tr>
+          </tbody>
+        </table></div>
+        <p>Tu nivel aparece en el encabezado de los detalles de tu cuenta. Para subirlo, se envía una nueva solicitud de opciones.</p>
+        <ul>
+          <li><strong>Si vives en México:</strong> México aparece entre los países de ejemplo de la cuenta internacional de Schwab, pero la lista es solo orientativa. Confirma directamente con Schwab International si tu cuenta puede operar opciones y margen, y si ya la tienes, qué nivel te aprobaron.</li>
+          <li><strong>Regla del day trader:</strong> la regla que exigía 25,000 dólares para hacer varias operaciones de día fue eliminada. E*TRADE informó que la aplicó desde el 9 de junio de 2026 y la reemplazó un mínimo de 2,000 dólares en cuentas con margen, además de un nuevo cálculo del poder de compra durante el día. Cada broker aplica sus propias políticas, así que verifica las de Schwab antes de operar.</li>
+          <li><strong>Impuestos:</strong> consulta con un contador cómo se declaran en tu país las ganancias de una cuenta en el extranjero.</li>
+        </ul>
+        <p><strong>Horario del mercado.</strong> Abre a las 9:30 a. m. y cierra a las 4:00 p. m., hora del Este de Estados Unidos. En lugares con UTC−5 todo el año, como Cancún o Colombia:</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Periodo</th><th>Apertura</th><th>Cierre</th></tr></thead>
+          <tbody>
+            <tr><td>Hasta el 31 de octubre de 2026 (horario de verano de EE. UU.)</td><td>8:30 a. m.</td><td>3:00 p. m.</td></tr>
+            <tr><td>Desde el 1 de noviembre de 2026 hasta marzo de 2027 (horario normal de EE. UU.)</td><td>9:30 a. m.</td><td>4:00 p. m.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Los primeros minutos tienden a ser los más movidos y con spreads más amplios. Para un plan de estudio y operación necesitas bloques fijos de pocos minutos, no el día completo: lo armamos en el capítulo de gestión del riesgo.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson">
+        <h3>3.7 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <div class="pager">
+      <a class="prev" href="cap2.html"><small>← Capítulo anterior</small>Capítulo 2: Por qué el contrato cuesta lo que cuesta</a>
+      <a class="next" href="cap4.html"><small>Capítulo siguiente →</small>Capítulo 4: TradingView desde cero</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+  <script src="cap3.js"></script>
+</body>
+</html>

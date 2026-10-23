@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 2: Por qué el contrato cuesta lo que cuesta · Academia de Opciones</title>
+  <meta name="description" content="Las dos partes del precio, el efecto del tiempo, la sensibilidad al precio y las expectativas del mercado.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cap2">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html" aria-current="page">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Capítulo 2</p>
+      <h1>Por qué el contrato cuesta lo que cuesta</h1>
+      <p class="lead">Las dos partes del precio, el efecto del tiempo, la sensibilidad al precio y las expectativas del mercado.</p>
+    </section>
+
+    <section id="cap2">
+      <article class="lesson" data-lesson="2.1">
+        <h3>2.1 Concepto: la prima tiene dos partes</h3>
+        <p class="tip"><strong>Definición.</strong> La prima de una opción se compone de <strong>valor intrínseco</strong> más <strong>valor extrínseco</strong> (también llamado valor temporal). El <strong>intrínseco</strong> es lo que el contrato valdría si se usara ahora mismo. El <strong>extrínseco</strong> es lo que se paga extra por el tiempo que queda y por la incertidumbre.</p>
+        <ul>
+          <li><strong>Call:</strong> intrínseco = precio del activo − strike (si es positivo; si no, cero).</li>
+          <li><strong>Put:</strong> intrínseco = strike − precio del activo (si es positivo; si no, cero).</li>
+        </ul>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Volvamos al vuelo con el precio congelado en $300. Hoy el vuelo ya cuesta <strong>$350</strong> y la aerolínea cobra <strong>$70</strong> por mantener tu congelamiento hasta el viernes.</p>
+          <ul>
+            <li><strong>Intrínseco: $50.</strong> Tu derecho de comprar a $300 ya vale $50 aunque nada cambie (350 − 300).</li>
+            <li><strong>Extrínseco: $20.</strong> Los otros $20 de los $70 pagan la posibilidad de que el precio siga subiendo antes del viernes (70 − 50).</li>
+          </ul>
+          <p>En el mercado funciona igual. Con el activo en 500, un call con strike 490 y prima de 15 tiene 10 de intrínseco y 5 de extrínseco.</p>
+        </div>
+        <p class="tip">Al llegar el vencimiento el extrínseco <strong>desaparece</strong> y solo queda el intrínseco. Por eso quien compra un contrato necesita que ocurra algo antes de esa fecha.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.2">
+        <h3>2.2 Dentro, en y fuera del dinero</h3>
+        <p class="tip"><strong>Definición.</strong> Esta etiqueta dice si un contrato tiene hoy valor intrínseco. Un contrato está <strong>dentro del dinero</strong> (ITM) si ya tiene valor intrínseco, <strong>en el dinero</strong> (ATM) si el strike es casi igual al precio del activo, y <strong>fuera del dinero</strong> (OTM) si no tiene valor intrínseco.</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th></th><th>Dentro del dinero (ITM)</th><th>En el dinero (ATM)</th><th>Fuera del dinero (OTM)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Call</strong></td><td>Precio del activo mayor que el strike</td><td>Precio ≈ strike</td><td>Precio menor que el strike</td></tr>
+            <tr><td><strong>Put</strong></td><td>Precio del activo menor que el strike</td><td>Precio ≈ strike</td><td>Precio mayor que el strike</td></tr>
+          </tbody>
+        </table></div>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Congelaste el vuelo en $300.</p>
+          <ul>
+            <li>Si hoy cuesta $350, tu contrato está <strong>dentro del dinero</strong>: el derecho ya vale algo por sí solo.</li>
+            <li>Si cuesta $300, está <strong>en el dinero</strong>.</li>
+            <li>Si cuesta $280, está <strong>fuera del dinero</strong>: no sirve todavía y solo vale la esperanza de que suba.</li>
+          </ul>
+        </div>
+        <p class="warn"><strong>Ojo.</strong> Los contratos fuera del dinero son los más baratos, pero también los que más a menudo vencen sin valor. Que sea barato no lo convierte en buen negocio.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.3">
+        <h3>2.3 El tiempo: theta</h3>
+        <p class="tip"><strong>Definición.</strong> <strong>Theta</strong> es cuánto valor pierde un contrato por cada día que pasa, si todo lo demás se queda igual. Es el valor extrínseco derritiéndose hasta llegar a cero en el vencimiento. La pérdida suele acelerarse en las últimas semanas, sobre todo en contratos cercanos al dinero.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Piensa en la garantía extendida de un electrodoméstico. Con doce meses por delante vale bastante, porque hay mucho tiempo para que algo falle. Con dos días de vigencia casi no vale nada, aunque el aparato sea el mismo. Una opción se desgasta igual.</p>
+        </div>
+        <p>Por eso comprar opciones es una carrera contra el reloj: no basta con acertar hacia dónde va el precio, también hay que acertar <strong>a tiempo</strong>. Quien vende opciones tiene el tiempo a su favor, pero asume otros riesgos que veremos en el capítulo 5.</p>
+        <p class="tip">En el simulador de la lección 2.7 verás la segunda gráfica: el valor de un contrato cae cada vez más rápido a medida que se acerca el vencimiento.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.4">
+        <h3>2.4 La sensibilidad al precio: delta</h3>
+        <p class="tip"><strong>Definición.</strong> <strong>Delta</strong> es cuánto cambia el precio del contrato cuando el activo se mueve $1. En un call va de 0 a 1; en un put, de 0 a −1. Los contratos dentro del dinero tienen delta alta (en valor absoluto) y los de fuera del dinero, baja.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Imagina un socio que se lleva <strong>50 centavos por cada peso</strong> que sube el negocio. Esa es una delta de 0.50. Si el activo sube $1, tu call sube cerca de $0.50 por acción, o sea unos $50 por contrato de 100 unidades. Con delta 0.20, el mismo movimiento solo te da unos $20.</p>
+        </div>
+        <ul>
+          <li><strong>Delta de un call</strong> positiva: ganas cuando el activo sube.</li>
+          <li><strong>Delta de un put</strong> negativa: ganas cuando el activo baja.</li>
+          <li>Como aproximación, una delta de 0.30 se suele leer como unas 30 probabilidades en 100 de que el contrato termine dentro del dinero. Es una estimación del modelo, no una promesa.</li>
+        </ul>
+        <p>La delta no es fija: cambia a medida que el precio se mueve. Esa velocidad de cambio se llama <strong>gamma</strong>.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.5">
+        <h3>2.5 Las expectativas del mercado: volatilidad implícita</h3>
+        <p class="tip"><strong>Definición.</strong> La <strong>volatilidad implícita</strong> (IV) es la medida de cuánto espera el mercado que se mueva el activo, deducida del precio de sus opciones. No dice hacia dónde, solo qué tan fuerte. A más IV, más cara la prima.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> El seguro de una casa en la costa se encarece al acercarse la temporada de huracanes, aunque todavía no haya llegado ninguno. Las aseguradoras cobran más porque la incertidumbre es mayor. Las opciones hacen lo mismo antes de un evento importante, como el reporte de resultados de una empresa o un anuncio económico.</p>
+        </div>
+        <p class="warn"><strong>Cuidado con el "aplastón" de IV.</strong> Cuando pasa el evento, la incertidumbre desaparece y la IV cae de golpe. Un contrato comprado puede perder valor aunque el activo se haya movido a tu favor, porque lo que se desinfló fue la expectativa. Pruébalo en el simulador: baja la IV y mira cómo cae el precio.</p>
+        <ul>
+          <li><strong>IV alta:</strong> contratos caros. Conviene a quien vende, perjudica a quien compra.</li>
+          <li><strong>IV baja:</strong> contratos baratos. Conviene a quien compra.</li>
+          <li>Muchas plataformas muestran el <strong>IV Rank</strong> o percentil de IV, que compara la IV de hoy con su rango del último año. Sirve para saber si la prima está cara o barata respecto a lo habitual en ese activo.</li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.6">
+        <h3>2.6 Resumen: las griegas</h3>
+        <p class="tip"><strong>Definición.</strong> Las <strong>griegas</strong> son medidas que dicen cómo reacciona el precio de un contrato ante cada factor. Cada una responde una pregunta distinta.</p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Griega</th><th>Pregunta que responde</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Delta</strong></td><td>¿Cuánto cambia el contrato si el activo se mueve $1?</td><td>Delta 0.50: unos $50 por contrato</td></tr>
+            <tr><td><strong>Gamma</strong></td><td>¿Cuánto cambia la delta si el activo se mueve $1?</td><td>Gamma alta cerca del vencimiento y del dinero</td></tr>
+            <tr><td><strong>Theta</strong></td><td>¿Cuánto pierde el contrato por cada día que pasa?</td><td>Theta −0.05: pierde unos $5 por contrato al día</td></tr>
+            <tr><td><strong>Vega</strong></td><td>¿Cuánto cambia el contrato si la IV sube un punto?</td><td>Vega 0.10: unos $10 por contrato por cada punto de IV</td></tr>
+            <tr><td><strong>Rho</strong></td><td>¿Cuánto cambia el contrato si cambian las tasas de interés?</td><td>Poco relevante en contratos de corto plazo</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Quién se beneficia de qué:</strong></p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th></th><th>Quien compra el contrato</th><th>Quien vende el contrato</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Tiempo (theta)</strong></td><td>En contra: cada día pierde valor</td><td>A favor: cada día gana valor</td></tr>
+            <tr><td><strong>IV sube (vega)</strong></td><td>A favor</td><td>En contra</td></tr>
+            <tr><td><strong>IV baja</strong></td><td>En contra</td><td>A favor</td></tr>
+            <tr><td><strong>Precio (delta)</strong></td><td>Gana si va en su dirección</td><td>Pierde si va contra su posición</td></tr>
+          </tbody>
+        </table></div>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="2.7">
+        <h3>2.7 Simulador del precio de un contrato</h3>
+        <p>Cambia el precio del activo, el strike, los días y la volatilidad, y mira cómo se mueven el precio y las griegas. Usa el modelo teórico de Black-Scholes, que es una aproximación: los precios reales del mercado pueden diferir. No son precios actuales de ningún activo.</p>
+        <div class="sim">
+          <div class="controls">
+            <label>Tipo de contrato
+              <select id="pType">
+                <option value="call">Call</option>
+                <option value="put">Put</option>
+              </select>
+            </label>
+            <label>Precio del activo hoy (USD)
+              <input id="pS" type="number" value="500" min="1" step="1">
+            </label>
+            <label>Strike (USD)
+              <input id="pK" type="number" value="500" min="1" step="1">
+            </label>
+            <label>Días que faltan para el vencimiento
+              <input id="pD" type="number" value="30" min="1" max="365" step="1">
+            </label>
+            <label>Volatilidad implícita: <strong id="pIVLabel"></strong>
+              <input id="pIV" type="range" min="5" max="80" step="1" value="20">
+            </label>
+            <label>Tasa de interés anual, % (ejemplo)
+              <input id="pR" type="number" value="4" min="0" max="15" step="0.25">
+            </label>
+          </div>
+          <div class="results">
+            <div><span>Precio por acción</span><strong id="oPrice"></strong></div>
+            <div><span>Costo del contrato (×100)</span><strong id="oCost"></strong></div>
+            <div><span>Valor intrínseco</span><strong id="oIntr"></strong></div>
+            <div><span>Valor extrínseco</span><strong id="oExtr"></strong></div>
+            <div><span>Situación</span><strong id="oMoney"></strong></div>
+            <div><span>Delta</span><strong id="oDelta"></strong></div>
+            <div><span>Theta por día (contrato)</span><strong id="oTheta"></strong></div>
+            <div><span>Vega por punto de IV (contrato)</span><strong id="oVega"></strong></div>
+          </div>
+          <p><strong>Valor del contrato según el precio del activo</strong></p>
+          <svg id="pChart1" class="chart" role="img" aria-label="Valor del contrato según el precio del activo, hoy y al vencimiento"></svg>
+          <p><strong>Cómo se desinfla el contrato con el paso del tiempo</strong> (con el precio del activo quieto)</p>
+          <svg id="pChart2" class="chart" role="img" aria-label="Valor del contrato según los días que faltan"></svg>
+        </div>
+        <p class="tip">Cosas para probar: (1) baja los días a 5 y mira el theta. (2) Sube la IV de 20 a 40 y mira cuánto se encarece el contrato. (3) Pon el strike muy lejos del precio y observa la delta.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson">
+        <h3>2.8 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <div class="pager">
+      <a class="prev" href="cap1.html"><small>← Capítulo anterior</small>Capítulo 1: Qué es una opción</a>
+      <a class="next" href="cap3.html"><small>Capítulo siguiente →</small>Capítulo 3: Cómo se lee y se opera una opción</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+  <script src="cap2.js"></script>
+</body>
+</html>

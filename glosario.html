@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glosario · Academia de Opciones</title>
+  <meta name="description" content="Todas las palabras del manual, explicadas de forma sencilla.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="glosario">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Consulta</p>
+      <h1>Glosario</h1>
+      <p class="lead">Las palabras del manual en orden alfabético.</p>
+    </section>
+    <section>
+      <dl>
+        <dt>Alcista / bajista</dt><dd>Alcista: que sube o se espera que suba. Bajista: que baja o se espera que baje. Una vela alcista cierra por encima de su apertura.</dd>
+        <dt>Alerta</dt><dd>Aviso automático que llega cuando el precio cumple una condición, como cruzar un nivel.</dd>
+        <dt>Asignación</dt><dd>Cuando a quien vendió un contrato le toca cumplir la obligación porque el comprador ejerció.</dd>
+        <dt>Ask</dt><dd>Precio más bajo al que alguien ofrece vender. Es el precio al que compras.</dd>
+        <dt>Bid</dt><dd>Precio más alto que alguien ofrece pagar. Es el precio al que vendes.</dd>
+        <dt>Cadena de opciones</dt><dd>Tabla con todos los contratos disponibles de un activo, ordenados por vencimiento y strike.</dd>
+        <dt>Call</dt><dd>Opción que da el derecho a comprar. Se usa cuando se espera que el precio suba.</dd>
+        <dt>Contrato</dt><dd>Unidad en que se operan las opciones. Normalmente cubre 100 unidades del subyacente.</dd>
+        <dt>Crédito</dt><dd>Dinero que cobras al abrir una estrategia.</dd>
+        <dt>Débito</dt><dd>Dinero que pagas al abrir una estrategia.</dd>
+        <dt>Delta</dt><dd>Cuánto cambia el precio del contrato cuando el activo se mueve $1.</dd>
+        <dt>Dentro del dinero (ITM)</dt><dd>Contrato que ya tiene valor intrínseco. Call: precio mayor que el strike. Put: precio menor que el strike.</dd>
+        <dt>Ejercicio</dt><dd>Usar el derecho del contrato: comprar las acciones con un call o venderlas con un put.</dd>
+        <dt>En el dinero (ATM)</dt><dd>Contrato cuyo strike es casi igual al precio del activo.</dd>
+        <dt>Estilo americano</dt><dd>Opción que puede ejercerse en cualquier momento hasta el vencimiento.</dd>
+        <dt>Fuera del dinero (OTM)</dt><dd>Contrato sin valor intrínseco. Call: precio menor que el strike. Put: precio mayor que el strike.</dd>
+        <dt>Gamma</dt><dd>Cuánto cambia la delta cuando el activo se mueve $1.</dd>
+        <dt>Griegas</dt><dd>Medidas que dicen cómo reacciona el precio de un contrato: delta, gamma, theta, vega y rho.</dd>
+        <dt>Interés abierto</dt><dd>Cantidad de contratos vigentes que todavía no se han cerrado.</dd>
+        <dt>Iron condor</dt><dd>Estrategia de cuatro patas que gana si el activo se queda dentro de un rango.</dd>
+        <dt>IV Rank</dt><dd>Compara la volatilidad implícita de hoy con su rango del último año.</dd>
+        <dt>Liquidez</dt><dd>Qué tan fácil es entrar y salir de un contrato sin perder dinero extra.</dd>
+        <dt>Media móvil</dt><dd>Promedio de los últimos N cierres, recalculado en cada vela.</dd>
+        <dt>Mecha</dt><dd>Línea delgada de una vela que llega hasta el máximo o el mínimo.</dd>
+        <dt>Opción</dt><dd>Contrato que da el derecho, no la obligación, de comprar o vender un activo a un precio acordado hasta una fecha determinada, a cambio de pagar un costo.</dd>
+        <dt>Orden limit</dt><dd>Orden que fija el precio: compra a ese precio o menos, vende a ese precio o más.</dd>
+        <dt>Orden market</dt><dd>Orden que se ejecuta de inmediato al precio que haya.</dd>
+        <dt>Pata</dt><dd>Cada contrato individual dentro de una estrategia.</dd>
+        <dt>Posición larga</dt><dd>Haber comprado un contrato. La pérdida máxima es la prima pagada.</dd>
+        <dt>Posición corta</dt><dd>Haber vendido un contrato. Se cobra la prima pero se asume una obligación.</dd>
+        <dt>Precio medio</dt><dd>Punto intermedio entre el bid y el ask. Sirve de referencia para una orden limit.</dd>
+        <dt>Prima</dt><dd>Lo que se paga por el contrato. Es la pérdida máxima de quien compra.</dd>
+        <dt>Punto de equilibrio</dt><dd>Precio donde no se gana ni se pierde. Call: strike más prima. Put: strike menos prima.</dd>
+        <dt>Put</dt><dd>Opción que da el derecho a vender. Se usa cuando se espera que el precio baje.</dd>
+        <dt>Resistencia</dt><dd>Zona de precios donde el activo ha frenado sus subidas.</dd>
+        <dt>Riesgo definido</dt><dd>Estrategia en la que se conoce la pérdida máxima antes de entrar.</dd>
+        <dt>RSI</dt><dd>Oscilador de 0 a 100 que mide la velocidad de los movimientos recientes. Por convención, sobre 70 es sobrecompra y bajo 30, sobreventa.</dd>
+        <dt>Soporte</dt><dd>Zona de precios donde el activo ha frenado sus caídas.</dd>
+        <dt>Spread (bid-ask)</dt><dd>Diferencia entre el ask y el bid. Es un costo oculto de entrar y salir.</dd>
+        <dt>Spread vertical</dt><dd>Estrategia que compra y vende contratos del mismo tipo y vencimiento con strikes distintos.</dd>
+        <dt>Straddle</dt><dd>Comprar un call y un put con el mismo strike y vencimiento.</dd>
+        <dt>Strangle</dt><dd>Comprar un call y un put con strikes distintos, fuera del dinero.</dd>
+        <dt>Strike</dt><dd>Precio acordado en el contrato.</dd>
+        <dt>Subyacente</dt><dd>Activo sobre el que va el contrato: una acción o un fondo como QQQ, IWM o DIA.</dd>
+        <dt>Temporalidad</dt><dd>Periodo que resume cada vela del gráfico: un minuto, una hora, un día…</dd>
+        <dt>Tendencia</dt><dd>Dirección general del precio. Alcista: máximos y mínimos cada vez más altos. Bajista: cada vez más bajos.</dd>
+        <dt>Theta</dt><dd>Cuánto valor pierde un contrato por cada día que pasa.</dd>
+        <dt>Valor extrínseco</dt><dd>Parte de la prima que paga por el tiempo restante y la incertidumbre. Desaparece al vencimiento.</dd>
+        <dt>Valor intrínseco</dt><dd>Lo que valdría el contrato si se usara ahora mismo.</dd>
+        <dt>Vega</dt><dd>Cuánto cambia el precio del contrato cuando la volatilidad implícita sube un punto.</dd>
+        <dt>Vela japonesa</dt><dd>Figura que resume apertura, cierre, máximo y mínimo de un periodo.</dd>
+        <dt>Vencimiento</dt><dd>Fecha límite del contrato. Después de ese día deja de existir.</dd>
+        <dt>Volatilidad implícita (IV)</dt><dd>Cuánto espera el mercado que se mueva el activo, deducido del precio de sus opciones. No dice la dirección.</dd>
+        <dt>Volumen</dt><dd>Cantidad de unidades o contratos operados en un periodo.</dd>
+      </dl>
+
+    </section>
+    <div class="pager"><a class="prev" href="index.html"><small>← Inicio</small>Índice del manual</a></div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+</body>
+</html>

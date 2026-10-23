@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 4: TradingView desde cero · Academia de Opciones</title>
+  <meta name="description" content="Desde crear la cuenta y descargar la aplicación hasta hacer tu primer análisis de un gráfico.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cap4">
+  <header class="topbar">
+    <a class="brand" href="index.html">Academia de Opciones</a>
+    <nav>
+      <details class="menu"><summary>Capítulos</summary>
+      <ol>
+        <li><a href="cap1.html">Capítulo 1: Qué es una opción</a></li>
+        <li><a href="cap2.html">Capítulo 2: Por qué el contrato cuesta lo que cuesta</a></li>
+        <li><a href="cap3.html">Capítulo 3: Cómo se lee y se opera una opción</a></li>
+        <li><a href="cap4.html" aria-current="page">Capítulo 4: TradingView desde cero</a></li>
+        <li><a href="cap5.html">Capítulo 5: Estrategias de opciones</a></li>
+        <li><a href="cap6.html">Capítulo 6: Cómo elegir tu estrategia</a></li>
+        <li class="soon">Capítulo 7: Gestión del riesgo y plan de trabajo (en preparación)</li>
+        <li class="soon">Capítulo 8: Tu sistema propio (en preparación)</li>
+      </ol></details>
+      <a href="glosario.html">Glosario</a>
+    </nav>
+    <div class="progress-wrap" title="Tu progreso">
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <small id="progressText">0%</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="chapter-head">
+      <p class="kicker">Capítulo 4</p>
+      <h1>TradingView desde cero</h1>
+      <p class="lead">Desde crear la cuenta y descargar la aplicación hasta hacer tu primer análisis de un gráfico.</p>
+    </section>
+
+    <section id="cap4">
+      <article class="lesson" data-lesson="4.1">
+        <h3>4.1 Concepto: qué es TradingView y para qué lo usaremos</h3>
+        <p class="tip"><strong>Definición.</strong> <strong>TradingView</strong> es una plataforma de gráficos y análisis de mercados. Se usa desde el navegador, como aplicación de escritorio (Windows, macOS y Linux) y en el celular. Sirve para <strong>estudiar</strong> cómo se ha movido un activo. No es un broker: no compra ni vende por ti.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Piensa en un viaje en auto. TradingView es el <strong>mapa</strong>: te muestra el camino recorrido y los cruces cercanos. El broker, en nuestro caso Schwab, es el <strong>volante</strong>: es donde de verdad se ejecuta la operación.</p>
+        </div>
+        <p>En este manual lo usaremos con tres activos: <strong>QQQ</strong> como principal, y <strong>IWM</strong> y <strong>DIA</strong> como apoyo para confirmar o contradecir lo que veas en QQQ.</p>
+        <p class="warn"><strong>Importante.</strong> Estudiar un gráfico no predice el futuro. Sirve para formar una idea razonable y definir dónde estarías equivocada, que es lo que permite controlar el riesgo.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.2">
+        <h3>4.2 Crear tu cuenta gratuita</h3>
+        <p>Con una cuenta gratuita basta para empezar. Los nombres de los botones pueden cambiar con el tiempo, pero el camino es este:</p>
+        <ol class="steps">
+          <li>Abre <strong>tradingview.com</strong> en tu navegador.</li>
+          <li>Busca el botón para crear una cuenta (suele decir "Empezar" o "Get started"), o el icono de persona arriba a la derecha y la opción de registrarte.</li>
+          <li>Regístrate con tu <strong>correo</strong> o con una cuenta de Google o Apple. Si usas correo, confirma el mensaje que te llegará.</li>
+          <li>Si te ofrece planes de pago, elige el <strong>plan básico gratuito</strong>. Los planes de pago traen más funciones, pero no los necesitas para aprender.</li>
+          <li>Al terminar verás un gráfico en pantalla. Ya estás dentro.</li>
+        </ol>
+        <p class="warn"><strong>Qué esperar del plan gratuito.</strong> Reseñas recientes indican que limita el número de indicadores por gráfico (se menciona dos), los gráficos por pestaña y muestra anuncios. Confirma los límites actuales en la propia plataforma. Verifica también si los precios de un activo aparecen como "en tiempo real" o "con retraso": para decidir una operación usa los precios en vivo de tu broker.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.3">
+        <h3>4.3 Descargar e instalar la aplicación</h3>
+        <p class="tip"><strong>Definición.</strong> <strong>TradingView Desktop</strong> es la versión instalable en tu computadora. Ofrece las funciones de la plataforma en una ventana propia. Puedes empezar en el navegador sin instalar nada, y descargar la aplicación después.</p>
+        <p><strong>Requisitos según el centro de ayuda de TradingView:</strong></p>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Sistema</th><th>Requisitos</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Windows</strong></td><td>Windows 10 (versión 22H2) o Windows 11 (versión 22H2 o posterior). Procesador Intel o AMD de 64 bits (no funciona con ARM). Requiere la aplicación "App Installer", que viene con Windows.</td></tr>
+            <tr><td><strong>macOS</strong></td><td>macOS Monterey (12) o más reciente. Procesador Intel o Apple Silicon (M1, M2…).</td></tr>
+            <tr><td><strong>Linux</strong></td><td>Paquete .deb o snap, procesador de 64 bits Intel o AMD.</td></tr>
+          </tbody>
+        </table></div>
+        <ol class="steps">
+          <li>Entra en <strong>tradingview.com/desktop</strong>, que es la página oficial de descarga.</li>
+          <li>Elige tu sistema (Windows, macOS o Linux) y descarga el instalador.</li>
+          <li>Abre el archivo descargado y sigue el asistente de instalación. En Windows, acepta los permisos que pida el sistema.</li>
+          <li>Abre TradingView Desktop e <strong>inicia sesión con la misma cuenta</strong> que creaste.</li>
+          <li>Si te pide un plan de pago para alguna función, usa la versión del navegador, que sí es gratuita, y consulta de nuevo más adelante.</li>
+        </ol>
+        <p class="warn"><strong>Cuidado.</strong> Descarga solo desde el sitio oficial de TradingView. Desconfía de buscadores o enlaces que ofrecen versiones "crackeadas" o "gratis con todo desbloqueado": suelen contener programas maliciosos. También puedes instalar la aplicación del celular desde la tienda oficial de tu teléfono.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.4">
+        <h3>4.4 Recorrido de la pantalla</h3>
+        <p>Esta es una vista simplificada de TradingView. La posición exacta de cada elemento puede variar con las actualizaciones, pero las piezas son estas:</p>
+        <svg id="mockUI" class="chart" role="img" aria-label="Esquema de la pantalla de TradingView con nueve zonas numeradas"></svg>
+        <ol>
+          <li><strong>Símbolo:</strong> el activo que estás viendo. Haz clic para buscar otro.</li>
+          <li><strong>Temporalidad:</strong> lo que representa cada vela (1 minuto, 1 hora, 1 día…).</li>
+          <li><strong>Tipo de gráfico:</strong> velas, barras o línea. Usaremos velas.</li>
+          <li><strong>Indicadores:</strong> herramientas matemáticas que se dibujan sobre el gráfico.</li>
+          <li><strong>Alerta:</strong> para que la plataforma te avise cuando el precio llegue a un nivel.</li>
+          <li><strong>Herramientas de dibujo</strong> (barra izquierda): líneas de tendencia, líneas horizontales y más.</li>
+          <li><strong>Lista de seguimiento</strong> (panel derecho): tus activos favoritos con su precio.</li>
+          <li><strong>El gráfico:</strong> la zona principal. Se mueve arrastrando y se acerca o aleja con la rueda del ratón.</li>
+          <li><strong>Barra inferior:</strong> rangos de fechas rápidos (1 día, 5 días, 1 mes…) y paneles adicionales.</li>
+        </ol>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.5">
+        <h3>4.5 Buscar tus tres activos y crear tu lista</h3>
+        <ol class="steps">
+          <li>Haz clic en el nombre del símbolo, arriba a la izquierda, y escribe <strong>QQQ</strong>. Elige el resultado "Invesco QQQ Trust" de la bolsa Nasdaq.</li>
+          <li>Abre el panel de la derecha con el icono de <strong>lista de seguimiento</strong> (watchlist).</li>
+          <li>Usa el botón <strong>+</strong> del panel para agregar QQQ, y repite con <strong>IWM</strong> (iShares Russell 2000 ETF) y <strong>DIA</strong> (SPDR Dow Jones Industrial Average ETF Trust).</li>
+          <li>Haz clic en cada nombre de la lista para cambiar de activo al instante.</li>
+        </ol>
+        <div class="example">
+          <p><strong>Qué representa cada uno.</strong> QQQ sigue a las 100 mayores empresas no financieras del Nasdaq, con mucho peso tecnológico. IWM sigue a las empresas pequeñas de Estados Unidos (índice Russell 2000). DIA sigue a 30 grandes empresas industriales (índice Dow Jones). Mirar los tres da una idea de si el mercado se mueve de forma pareja o dividida.</p>
+        </div>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.6">
+        <h3>4.6 Velas japonesas desde cero</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>vela</strong> resume lo que hizo el precio durante un periodo con cuatro datos: <strong>apertura</strong> (donde empezó), <strong>cierre</strong> (donde terminó), <strong>máximo</strong> y <strong>mínimo</strong>. El rectángulo se llama <strong>cuerpo</strong> y va de la apertura al cierre. Las líneas delgadas se llaman <strong>mechas</strong> y llegan hasta el máximo y el mínimo.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Piensa en la temperatura de un día. A las 8 de la mañana marcaba 24° (apertura). Llegó a 31° (máximo) y bajó a 22° (mínimo). A las 8 de la noche marcaba 28° (cierre). Una vela es ese resumen del día en una sola figura.</p>
+        </div>
+        <ul>
+          <li>Si el cierre es <strong>mayor</strong> que la apertura, la vela es <strong>alcista</strong>. Por defecto TradingView la pinta de verde.</li>
+          <li>Si el cierre es <strong>menor</strong> que la apertura, la vela es <strong>bajista</strong>. Por defecto la pinta de rojo.</li>
+        </ul>
+        <p>Arma tu propia vela:</p>
+        <div class="sim">
+          <div class="controls">
+            <label>Apertura<input id="cO" type="number" value="100" step="0.5"></label>
+            <label>Máximo<input id="cH" type="number" value="106" step="0.5"></label>
+            <label>Mínimo<input id="cL" type="number" value="98" step="0.5"></label>
+            <label>Cierre<input id="cC" type="number" value="104" step="0.5"></label>
+          </div>
+          <p id="cMsg" class="warn" hidden></p>
+          <svg id="candleSvg" class="chart" role="img" aria-label="Vela japonesa dibujada con tus datos"></svg>
+          <div class="results">
+            <div><span>Tipo de vela</span><strong id="cKind"></strong></div>
+            <div><span>Tamaño del cuerpo</span><strong id="cBody"></strong></div>
+            <div><span>Mecha superior / inferior</span><strong id="cWicks"></strong></div>
+            <div><span>Rango total</span><strong id="cRange"></strong></div>
+          </div>
+        </div>
+        <p class="tip">Una vela de cuerpo grande y mechas cortas muestra que el precio avanzó con decisión en una dirección. Una de cuerpo pequeño y mechas largas muestra indecisión: subió y bajó mucho, pero terminó casi donde empezó.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.7">
+        <h3>4.7 Temporalidades</h3>
+        <p class="tip"><strong>Definición.</strong> La <strong>temporalidad</strong> es el periodo que resume cada vela. En una temporalidad diaria, cada vela es un día. En la de una hora, cada vela es una hora. Cambiarla cambia lo que ves, no lo que pasó.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Es el zoom de un mapa. Con el mapa alejado ves el país y las carreteras principales. Acercado, ves las calles. Para decidir una ruta necesitas ambos: primero el panorama y después el detalle.</p>
+        </div>
+        <div class="table-wrap"><table class="tbl">
+          <thead><tr><th>Temporalidad</th><th>Cada vela es…</th><th>Para qué sirve</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Semanal (1W)</strong></td><td>Una semana</td><td>Contexto grande: tendencia de fondo y niveles importantes</td></tr>
+            <tr><td><strong>Diaria (1D)</strong></td><td>Un día</td><td>Tendencia y niveles principales. Es la base para contratos de varias semanas</td></tr>
+            <tr><td><strong>4 horas y 1 hora</strong></td><td>Cuatro horas o una hora</td><td>Detalle del movimiento reciente y de la zona de entrada</td></tr>
+            <tr><td><strong>15 y 5 minutos</strong></td><td>Quince o cinco minutos</td><td>Momento fino de entrada o salida. Más ruido, menos fiabilidad</td></tr>
+          </tbody>
+        </table></div>
+        <p>Un método ordenado es <strong>de lo grande a lo pequeño</strong>: primero la diaria (¿hacia dónde va el activo en general?), luego una hora (¿dónde está ahora?). Más adelante afinaremos qué temporalidades usar según el tipo de contrato.</p>
+        <p>En TradingView, la temporalidad se cambia en la barra superior, junto al símbolo, o escribiendo el número directamente en el gráfico.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.8">
+        <h3>4.8 Tendencia, soporte y resistencia</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>tendencia alcista</strong> es una serie de máximos y mínimos cada vez más altos. Una <strong>bajista</strong>, de máximos y mínimos cada vez más bajos. Un <strong>soporte</strong> es una zona de precios donde el activo ha frenado sus caídas, y una <strong>resistencia</strong>, una zona donde ha frenado sus subidas.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Una pelota botando en una habitación: el piso es el soporte y el techo es la resistencia. Mientras haya piso y techo, la pelota rebota entre ambos. Si un golpe fuerte la hace atravesar el techo, el techo viejo pasa a ser el nuevo piso. En los mercados pasa algo parecido: una resistencia superada con fuerza suele convertirse en soporte.</p>
+        </div>
+        <p>Mira este gráfico de ejemplo, con datos inventados:</p>
+        <div class="sim">
+          <label class="toggle"><input type="checkbox" id="srToggle" checked> Mostrar soporte y resistencia</label>
+          <svg id="srChart" class="chart" role="img" aria-label="Precio de ejemplo que rebota entre un soporte y una resistencia y luego rompe hacia arriba"></svg>
+        </div>
+        <p>El precio rebotó cuatro veces cerca de 101 (soporte) y cuatro veces cerca de 109 (resistencia). Después superó el 109 y al retroceder rebotó cerca de 110, donde antes estaba el techo.</p>
+        <p><strong>Cómo se dibuja en TradingView:</strong></p>
+        <ol class="steps">
+          <li>En la barra izquierda de herramientas de dibujo, elige la <strong>línea horizontal</strong>.</li>
+          <li>Haz clic sobre el gráfico en el nivel donde el precio ha rebotado varias veces. Mejor que sea una zona, no un número exacto.</li>
+          <li>Para la tendencia, elige la <strong>línea de tendencia</strong> y únela por dos mínimos (alcista) o dos máximos (bajista).</li>
+          <li>Hazlo primero en la temporalidad <strong>diaria</strong>, que muestra los niveles más importantes.</li>
+        </ol>
+        <p class="warn"><strong>Ojo.</strong> Dibujar niveles tiene mucho de interpretación: dos personas pueden marcar zonas distintas. Úsalos como mapa de referencia, no como garantía de que el precio rebotará.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.9">
+        <h3>4.9 Volumen</h3>
+        <p class="tip"><strong>Definición.</strong> El <strong>volumen</strong> es la cantidad de unidades que se operaron en un periodo. En TradingView se muestra como barras en la parte baja del gráfico, una por cada vela.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Una tienda con fila larga en la puerta: mucha gente está interesada. Si el precio sube con mucho volumen, hubo mucha participación detrás del movimiento. Si sube con poco volumen, pocas personas lo respaldan.</p>
+        </div>
+        <ul>
+          <li>Un movimiento fuerte con <strong>volumen alto</strong> suele ser más creíble que uno con volumen bajo.</li>
+          <li>Cuando el precio llega a un soporte o a una resistencia, un volumen alto da pistas de si el nivel aguantará o se romperá.</li>
+          <li>Si el volumen no aparece en tu gráfico, agrégalo desde <strong>Indicadores</strong> buscando "Volume".</li>
+        </ul>
+        <p>Son pistas, no reglas: ningún dato del gráfico funciona siempre.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.10">
+        <h3>4.10 Indicadores básicos: media móvil y RSI</h3>
+        <p class="tip"><strong>Definición.</strong> Un <strong>indicador</strong> es un cálculo matemático sobre los precios que se dibuja en el gráfico. Dos de los más sencillos son la <strong>media móvil</strong> y el <strong>RSI</strong>.</p>
+        <p><strong>Media móvil.</strong> Es el promedio de los últimos N cierres, recalculado en cada vela. Suaviza el ruido y muestra la dirección general. Una media de 20 días promedia los últimos 20 cierres.</p>
+        <div class="example">
+          <p><strong>Ejemplo.</strong> Es como el promedio de tus gastos de los últimos 30 días: un mal día no lo cambia mucho, pero una racha de varios días sí. Por eso la media reacciona con retraso.</p>
+        </div>
+        <div class="sim">
+          <label>Periodo de la media móvil: <strong id="smaLabel"></strong>
+            <input id="smaN" type="range" min="3" max="20" value="8">
+          </label>
+          <svg id="smaChart" class="chart" role="img" aria-label="Precio de ejemplo y su media móvil"></svg>
+        </div>
+        <p>Observa que con un periodo corto la media sigue de cerca al precio, y con uno largo se aplana y llega más tarde.</p>
+        <p><strong>RSI (índice de fuerza relativa).</strong> Es un oscilador entre 0 y 100 que mide la velocidad de los movimientos recientes. Su configuración habitual usa 14 periodos. Por convención, un valor sobre 70 se lee como <strong>sobrecompra</strong> (subió muy rápido) y bajo 30 como <strong>sobreventa</strong> (cayó muy rápido).</p>
+        <p class="warn"><strong>Cuidado.</strong> En una tendencia fuerte el RSI puede quedarse sobre 70 durante mucho tiempo mientras el precio sigue subiendo. Sobrecompra no significa "va a bajar". Ningún indicador predice: todos describen lo que ya pasó.</p>
+        <p><strong>Cómo agregarlos en TradingView:</strong> clic en <strong>Indicadores</strong> en la barra superior, escribe "Moving Average" (media móvil) o "RSI" y haz clic sobre el resultado. Como el plan gratuito limita cuántos puedes usar, elige pocos y que cada uno responda una pregunta distinta: la media móvil para la dirección y el RSI para la velocidad.</p>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson" data-lesson="4.11">
+        <h3>4.11 Alertas, guardar tu diseño y tu rutina de análisis</h3>
+        <p class="tip"><strong>Definición.</strong> Una <strong>alerta</strong> es un aviso automático que te llega cuando el precio cumple una condición, por ejemplo cruzar un nivel. Así no tienes que mirar la pantalla todo el día.</p>
+        <ol class="steps">
+          <li>Haz clic en el botón <strong>Alerta</strong> de la barra superior, o clic derecho sobre el nivel del gráfico y elige agregar una alerta.</li>
+          <li>Elige la condición (por ejemplo, que el precio <strong>cruce</strong> un valor) y escribe el nivel.</li>
+          <li>Elige cómo quieres el aviso (ventana, aplicación, correo) y guarda.</li>
+        </ol>
+        <p>Las alertas pueden tener límites de cantidad y de duración según tu plan. Confírmalos en la plataforma.</p>
+        <p>Tu diseño de gráfico (los indicadores y las líneas que dibujaste) queda guardado en tu cuenta. Si TradingView te muestra un botón para guardar el diseño, úsalo antes de cerrar.</p>
+        <p><strong>Tu rutina de análisis de diez minutos para QQQ.</strong> Marca cada paso cuando lo hagas:</p>
+        <ul class="checklist" data-check="cap4-rutina">
+          <li><label><input type="checkbox"> <span>Abro QQQ en la temporalidad diaria: ¿la tendencia es alcista, bajista o lateral?</span></label></li>
+          <li><label><input type="checkbox"> <span>Marco el soporte y la resistencia más cercanos al precio actual.</span></label></li>
+          <li><label><input type="checkbox"> <span>Miro el volumen de los últimos días: ¿hay más o menos participación que de costumbre?</span></label></li>
+          <li><label><input type="checkbox"> <span>Reviso IWM y DIA: ¿confirman o contradicen lo que veo en QQQ?</span></label></li>
+          <li><label><input type="checkbox"> <span>Reviso noticias y eventos de los próximos días (resultados de empresas, anuncios económicos) en Finviz o Yahoo Finance.</span></label></li>
+          <li><label><input type="checkbox"> <span>Cambio a una hora para ver el detalle de dónde está el precio ahora.</span></label></li>
+          <li><label><input type="checkbox"> <span>Anoto en mi diario qué veo y qué haría, aunque hoy no opere.</span></label></li>
+        </ul>
+        <label class="done"><input type="checkbox"> Lección completada</label>
+      </article>
+
+      <article class="lesson">
+        <h3>4.12 Ponte a prueba</h3>
+        <div id="quiz"></div>
+        <p id="quizScore" class="score"></p>
+        <button class="btn secondary" id="quizReset" type="button">Reiniciar quiz</button>
+      </article>
+    </section>
+
+    <div class="pager">
+      <a class="prev" href="cap3.html"><small>← Capítulo anterior</small>Capítulo 3: Cómo se lee y se opera una opción</a>
+      <a class="next" href="cap5.html"><small>Capítulo siguiente →</small>Capítulo 5: Estrategias de opciones</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contenido educativo, no constituye asesoría financiera ni recomendación de inversión. Los ejemplos numéricos son ilustrativos y no son precios actuales del mercado.</p>
+  </footer>
+
+  <script src="lib.js"></script>
+  <script src="common.js"></script>
+  <script src="cap4.js"></script>
+</body>
+</html>
